@@ -26,47 +26,46 @@ export default function Home() {
     <main>
       {/* Hero */}
       <section
-        className="relative flex items-end min-h-screen pb-24 px-6"
+        className="relative flex flex-col items-center justify-center text-center min-h-screen px-6"
         style={{
-          background: "linear-gradient(160deg, #ffffff 0%, #fafaf8 50%, #f2f1ec 100%)",
+          background: "linear-gradient(180deg, #ffffff 0%, #fafaf8 55%, #f2f1ec 100%)",
         }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 80% 30%, rgba(0,0,0,0.025) 0%, transparent 70%)",
+              "radial-gradient(ellipse 50% 45% at 50% 42%, rgba(0,0,0,0.02) 0%, transparent 70%)",
           }}
         />
-        <div
-          className="absolute top-1/3 left-0 w-px h-64 opacity-10"
-          style={{ background: "linear-gradient(to bottom, transparent, #1a1a1a, transparent)" }}
-        />
 
-        <div className="relative max-w-7xl mx-auto w-full">
-          <p className="text-xs uppercase tracking-[0.4em] mb-6" style={{ color: "rgba(0,0,0,0.4)" }}>
+        <div className="relative flex flex-col items-center max-w-3xl mx-auto">
+          <p className="text-xs uppercase tracking-[0.5em] mb-10" style={{ color: "rgba(0,0,0,0.4)" }}>
             Visual Storyteller
           </p>
+
           <h1
-            className="font-light leading-none mb-8"
+            className="font-light leading-none mb-2"
             style={{
-              fontSize: "clamp(3.5rem, 11vw, 10rem)",
+              fontSize: "clamp(3rem, 9vw, 8rem)",
               letterSpacing: "-0.02em",
               color: "#1a1a1a",
             }}
           >
-            Karam
-            <br />
-            <span style={{ color: "rgba(0,0,0,0.25)" }}>Kabbas</span>
+            Karam Kabbas
           </h1>
+
+          <div className="w-16 h-px my-10" style={{ background: "rgba(0,0,0,0.25)" }} />
+
           <p
-            className="max-w-sm text-base font-light leading-relaxed mb-12"
+            className="max-w-md text-base font-light leading-relaxed mb-12"
             style={{ color: "rgba(0,0,0,0.5)" }}
           >
             Capturing the extraordinary in nature, the precision of machines,
             and the depth of human stories.
           </p>
-          <div className="flex flex-wrap gap-4">
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-all duration-300 hover:bg-black hover:text-white"
