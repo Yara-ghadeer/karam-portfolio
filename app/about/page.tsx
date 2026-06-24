@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6">
@@ -54,36 +56,32 @@ export default function About() {
 
           {/* Right: portrait placeholder */}
           <div className="lg:sticky lg:top-28">
-            <div
-              className="relative w-full aspect-[3/4]"
-              style={{
-                background: "linear-gradient(160deg, #ebeae5 0%, #dcdbd4 100%)",
-              }}
-            >
-              <div
-                className="absolute inset-0 opacity-40"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 6px)",
-                }}
+            <div className="relative w-full aspect-[3/4] overflow-hidden">
+              <Image
+                src="/about.jpg"
+                alt="Karam Kabbas photographing on the street at night"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
               <div
                 className="absolute bottom-0 left-0 right-0 h-1/2"
-                style={{ background: "linear-gradient(to top, rgba(220,219,212,0.95) 0%, transparent 100%)" }}
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)" }}
               />
               <div className="absolute bottom-8 left-8">
-                <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "rgba(0,0,0,0.4)" }}>
+                <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>
                   Photographer
                 </p>
-                <p className="font-light text-lg" style={{ color: "#1a1a1a" }}>Karam Kabbas</p>
+                <p className="font-light text-lg" style={{ color: "#fff" }}>Karam Kabbas</p>
               </div>
 
               {/* Decorative corner */}
               <div
                 className="absolute top-6 right-6 w-12 h-12"
                 style={{
-                  borderTop: "1px solid rgba(0,0,0,0.15)",
-                  borderRight: "1px solid rgba(0,0,0,0.15)",
+                  borderTop: "1px solid rgba(255,255,255,0.4)",
+                  borderRight: "1px solid rgba(255,255,255,0.4)",
                 }}
               />
             </div>
