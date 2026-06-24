@@ -26,15 +26,16 @@ export default function Nav() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
-        background: scrolled ? "rgba(10,10,10,0.92)" : "transparent",
+        background: scrolled ? "rgba(250,250,248,0.85)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.06)" : "none",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         <Link
           href="/"
-          className="text-white font-light tracking-[0.25em] uppercase text-sm"
+          className="font-light tracking-[0.25em] uppercase text-sm"
+          style={{ color: "#1a1a1a" }}
         >
           Karam Kabbas
         </Link>
@@ -47,7 +48,7 @@ export default function Nav() {
               href={href}
               className="text-xs uppercase tracking-[0.2em] transition-colors duration-200"
               style={{
-                color: pathname === href ? "#fff" : "rgba(255,255,255,0.45)",
+                color: pathname === href ? "#1a1a1a" : "rgba(0,0,0,0.4)",
               }}
             >
               {label}
@@ -62,30 +63,30 @@ export default function Nav() {
           aria-label="Toggle menu"
         >
           <span
-            className="block w-5 h-px bg-white transition-all duration-300"
-            style={{ transform: menuOpen ? "rotate(45deg) translate(3px, 3px)" : "none" }}
+            className="block w-5 h-px transition-all duration-300"
+            style={{ background: "#1a1a1a", transform: menuOpen ? "rotate(45deg) translate(3px, 3px)" : "none" }}
           />
           <span
-            className="block w-5 h-px bg-white transition-all duration-300"
-            style={{ opacity: menuOpen ? 0 : 1 }}
+            className="block w-5 h-px transition-all duration-300"
+            style={{ background: "#1a1a1a", opacity: menuOpen ? 0 : 1 }}
           />
           <span
-            className="block w-5 h-px bg-white transition-all duration-300"
-            style={{ transform: menuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none" }}
+            className="block w-5 h-px transition-all duration-300"
+            style={{ background: "#1a1a1a", transform: menuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none" }}
           />
         </button>
       </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden px-6 pb-8 flex flex-col gap-6" style={{ background: "rgba(10,10,10,0.96)" }}>
+        <div className="md:hidden px-6 pb-8 flex flex-col gap-6" style={{ background: "rgba(250,250,248,0.97)" }}>
           {links.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
               className="text-xs uppercase tracking-[0.2em] transition-colors"
-              style={{ color: pathname === href ? "#fff" : "rgba(255,255,255,0.45)" }}
+              style={{ color: pathname === href ? "#1a1a1a" : "rgba(0,0,0,0.4)" }}
             >
               {label}
             </Link>

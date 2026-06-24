@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`} style={{ background: "#0a0a0a" }}>
-      <body className="min-h-full antialiased" style={{ background: "#0a0a0a", color: "#f0f0f0" }}>
+    <html lang="en" className={`${inter.variable} h-full`} style={{ background: "#fafaf8" }}>
+      <body className="min-h-full antialiased" style={{ background: "#fafaf8", color: "#1a1a1a" }}>
         <Nav />
         {children}
       </body>

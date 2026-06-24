@@ -5,19 +5,19 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           {/* Left: text */}
           <div>
-            <p className="text-xs uppercase tracking-[0.4em] mb-6" style={{ color: "rgba(255,255,255,0.25)" }}>
+            <p className="text-xs uppercase tracking-[0.4em] mb-6" style={{ color: "rgba(0,0,0,0.35)" }}>
               About
             </p>
             <h1
-              className="font-light leading-tight mb-10 text-white"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.02em" }}
+              className="font-light leading-tight mb-10"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.02em", color: "#1a1a1a" }}
             >
               Karam
               <br />
               Kabbas
             </h1>
 
-            <div className="space-y-6 text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <div className="space-y-6 text-base font-light leading-relaxed" style={{ color: "rgba(0,0,0,0.6)" }}>
               <p>
                 Based between mountains and cities, Karam Kabbas is a photographer whose work
                 spans the natural world, the mechanical, and the deeply human. His images chase
@@ -43,8 +43,8 @@ export default function About() {
                 { value: "∞", label: "Stories left" },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="text-3xl font-light text-white mb-1">{stat.value}</div>
-                  <div className="text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  <div className="text-3xl font-light mb-1" style={{ color: "#1a1a1a" }}>{stat.value}</div>
+                  <div className="text-xs uppercase tracking-widest" style={{ color: "rgba(0,0,0,0.4)" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -57,33 +57,33 @@ export default function About() {
             <div
               className="relative w-full aspect-[3/4]"
               style={{
-                background: "linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 100%)",
+                background: "linear-gradient(160deg, #ebeae5 0%, #dcdbd4 100%)",
               }}
             >
               <div
-                className="absolute inset-0 opacity-15"
+                className="absolute inset-0 opacity-40"
                 style={{
                   backgroundImage:
-                    "repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,0.03) 3px, rgba(255,255,255,0.03) 6px)",
+                    "repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 6px)",
                 }}
               />
               <div
                 className="absolute bottom-0 left-0 right-0 h-1/2"
-                style={{ background: "linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 100%)" }}
+                style={{ background: "linear-gradient(to top, rgba(220,219,212,0.95) 0%, transparent 100%)" }}
               />
               <div className="absolute bottom-8 left-8">
-                <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.3)" }}>
+                <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "rgba(0,0,0,0.4)" }}>
                   Photographer
                 </p>
-                <p className="text-white font-light text-lg">Karam Kabbas</p>
+                <p className="font-light text-lg" style={{ color: "#1a1a1a" }}>Karam Kabbas</p>
               </div>
 
               {/* Decorative corner */}
               <div
                 className="absolute top-6 right-6 w-12 h-12"
                 style={{
-                  borderTop: "1px solid rgba(255,255,255,0.1)",
-                  borderRight: "1px solid rgba(255,255,255,0.1)",
+                  borderTop: "1px solid rgba(0,0,0,0.15)",
+                  borderRight: "1px solid rgba(0,0,0,0.15)",
                 }}
               />
             </div>
@@ -93,9 +93,9 @@ export default function About() {
                 <div
                   key={item}
                   className="flex items-center gap-3 text-sm"
-                  style={{ color: "rgba(255,255,255,0.35)" }}
+                  style={{ color: "rgba(0,0,0,0.5)" }}
                 >
-                  <div className="w-1 h-1 rounded-full bg-white opacity-30" />
+                  <div className="w-1 h-1 rounded-full opacity-40" style={{ background: "#1a1a1a" }} />
                   {item}
                 </div>
               ))}

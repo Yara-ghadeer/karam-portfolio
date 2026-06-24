@@ -21,22 +21,22 @@ const photos = [
 
 const gradients: Record<string, string[]> = {
   Nature: [
-    "linear-gradient(135deg, #1a2e1a 0%, #0d1a0d 100%)",
-    "linear-gradient(135deg, #2d4a2d 0%, #1a2e1a 100%)",
-    "linear-gradient(135deg, #0d2010 0%, #071208 100%)",
-    "linear-gradient(135deg, #1e3a1e 0%, #0f1f0f 100%)",
+    "linear-gradient(135deg, #d7ebd7 0%, #b8d8b8 100%)",
+    "linear-gradient(135deg, #c8e6c8 0%, #a3cfa3 100%)",
+    "linear-gradient(135deg, #e0f0e0 0%, #c2ddc2 100%)",
+    "linear-gradient(135deg, #cfe8cf 0%, #aed4ae 100%)",
   ],
   Automotive: [
-    "linear-gradient(135deg, #2e1a0d 0%, #1a0d07 100%)",
-    "linear-gradient(135deg, #3d2510 0%, #200f05 100%)",
-    "linear-gradient(135deg, #1a1008 0%, #0d0804 100%)",
-    "linear-gradient(135deg, #2a1a08 0%, #150d04 100%)",
+    "linear-gradient(135deg, #f0ddc8 0%, #e0c2a0 100%)",
+    "linear-gradient(135deg, #f3e0cc 0%, #e3c8a8 100%)",
+    "linear-gradient(135deg, #ecd6bf 0%, #d9bd96 100%)",
+    "linear-gradient(135deg, #f1dcc2 0%, #e0c09a 100%)",
   ],
   Documentary: [
-    "linear-gradient(135deg, #0d1a2e 0%, #070d1a 100%)",
-    "linear-gradient(135deg, #0f1e35 0%, #08111f 100%)",
-    "linear-gradient(135deg, #111828 0%, #090d15 100%)",
-    "linear-gradient(135deg, #0a1520 0%, #05090e 100%)",
+    "linear-gradient(135deg, #d4e0f0 0%, #b0c8e6 100%)",
+    "linear-gradient(135deg, #cdddf0 0%, #a8c5e8 100%)",
+    "linear-gradient(135deg, #dae4f2 0%, #bcd0ed 100%)",
+    "linear-gradient(135deg, #d0dcf0 0%, #aec8e6 100%)",
   ],
 };
 
@@ -55,10 +55,10 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-14">
-          <p className="text-xs uppercase tracking-[0.4em] mb-4" style={{ color: "rgba(255,255,255,0.25)" }}>
+          <p className="text-xs uppercase tracking-[0.4em] mb-4" style={{ color: "rgba(0,0,0,0.35)" }}>
             Portfolio
           </p>
-          <h1 className="text-4xl font-light text-white mb-10" style={{ letterSpacing: "-0.01em" }}>
+          <h1 className="text-4xl font-light mb-10" style={{ letterSpacing: "-0.01em", color: "#1a1a1a" }}>
             Selected Work
           </h1>
 
@@ -70,10 +70,10 @@ export default function Portfolio() {
                 onClick={() => setActive(cat)}
                 className="px-5 py-2 text-xs uppercase tracking-[0.2em] transition-all duration-200"
                 style={{
-                  background: active === cat ? "rgba(255,255,255,0.08)" : "transparent",
-                  color: active === cat ? "#fff" : "rgba(255,255,255,0.35)",
+                  background: active === cat ? "rgba(0,0,0,0.05)" : "transparent",
+                  color: active === cat ? "#1a1a1a" : "rgba(0,0,0,0.4)",
                   border: "1px solid",
-                  borderColor: active === cat ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)",
+                  borderColor: active === cat ? "rgba(0,0,0,0.25)" : "rgba(0,0,0,0.1)",
                 }}
               >
                 {cat}
@@ -98,7 +98,7 @@ export default function Portfolio() {
                 className="absolute inset-0 opacity-20"
                 style={{
                   backgroundImage:
-                    "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.02) 2px, rgba(255,255,255,0.02) 4px)",
+                    "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
                 }}
               />
 
@@ -118,8 +118,8 @@ export default function Portfolio() {
 
               {/* Category badge */}
               <div
-                className="absolute top-4 left-4 text-xs uppercase tracking-widest opacity-30 group-hover:opacity-0 transition-opacity duration-300"
-                style={{ fontSize: "10px", color: "#fff" }}
+                className="absolute top-4 left-4 text-xs uppercase tracking-widest opacity-50 group-hover:opacity-0 transition-opacity duration-300"
+                style={{ fontSize: "10px", color: "rgba(0,0,0,0.6)" }}
               >
                 {photo.category}
               </div>
