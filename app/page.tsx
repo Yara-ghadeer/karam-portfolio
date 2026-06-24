@@ -94,34 +94,63 @@ export default function Home() {
         <p className="text-xs uppercase tracking-[0.4em] mb-14" style={{ color: "rgba(0,0,0,0.35)" }}>
           Disciplines
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3" style={{ border: "1px solid rgba(0,0,0,0.08)" }}>
-          {categories.map((cat, i) => (
-            <Link
-              key={cat.title}
-              href={cat.href}
-              className="group relative p-10 flex flex-col justify-end min-h-72 transition-all duration-500 hover:bg-black/[0.02]"
-              style={{
-                borderRight: i < 2 ? "1px solid rgba(0,0,0,0.08)" : "none",
-              }}
-            >
-              <div
-                className="w-8 h-px mb-6 transition-all duration-500 group-hover:w-16"
-                style={{ background: cat.accent }}
-              />
-              <h2 className="text-2xl font-light tracking-wide mb-3" style={{ color: "#1a1a1a" }}>
-                {cat.title}
-              </h2>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(0,0,0,0.5)" }}>
-                {cat.description}
-              </p>
-              <span
-                className="inline-block mt-6 text-xs uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-300"
-                style={{ color: cat.accent }}
+        <div className="flex flex-col gap-16 md:gap-8">
+          {categories.map((cat, i) => {
+            const alignEnd = i % 2 === 1;
+            return (
+              <Link
+                key={cat.title}
+                href={cat.href}
+                className={`group relative block w-full md:w-3/4 ${
+                  alignEnd ? "md:ml-auto md:text-right" : "md:mr-auto"
+                }`}
               >
-                Explore →
-              </span>
-            </Link>
-          ))}
+                <div
+                  className={`flex items-baseline gap-6 ${
+                    alignEnd ? "md:flex-row-reverse" : ""
+                  }`}
+                >
+                  <span
+                    className="font-light leading-none select-none transition-colors duration-500"
+                    style={{
+                      fontSize: "clamp(3rem, 7vw, 6rem)",
+                      color: "rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    0{i + 1}
+                  </span>
+                  <div className={alignEnd ? "md:text-right" : ""}>
+                    <div
+                      className={`h-px mb-5 transition-all duration-500 w-10 group-hover:w-20 ${
+                        alignEnd ? "md:ml-auto" : ""
+                      }`}
+                      style={{ background: cat.accent }}
+                    />
+                    <h2
+                      className="text-3xl md:text-4xl font-light tracking-wide mb-3 transition-transform duration-500 group-hover:translate-x-0"
+                      style={{ color: "#1a1a1a" }}
+                    >
+                      {cat.title}
+                    </h2>
+                    <p
+                      className="text-sm leading-relaxed max-w-md"
+                      style={{ color: "rgba(0,0,0,0.5)" }}
+                    >
+                      {cat.description}
+                    </p>
+                    <span
+                      className={`inline-flex items-center gap-2 mt-6 text-xs uppercase tracking-[0.2em] opacity-50 transition-all duration-300 group-hover:opacity-100 ${
+                        alignEnd ? "md:flex-row-reverse" : ""
+                      }`}
+                      style={{ color: cat.accent }}
+                    >
+                      Explore →
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
