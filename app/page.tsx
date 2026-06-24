@@ -68,8 +68,8 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-all duration-300 hover:bg-black hover:text-white"
-              style={{ borderColor: "rgba(0,0,0,0.25)", color: "#1a1a1a" }}
+              className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-neutral-900 transition-all duration-300 hover:bg-black hover:text-white"
+              style={{ borderColor: "rgba(0,0,0,0.25)" }}
             >
               View Work
             </Link>

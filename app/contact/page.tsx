@@ -171,8 +171,8 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="border px-10 py-3.5 text-xs uppercase tracking-[0.25em] transition-all duration-300 hover:bg-black hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current"
-                  style={{ borderColor: "rgba(0,0,0,0.25)", color: "#1a1a1a" }}
+                  className="border px-10 py-3.5 text-xs uppercase tracking-[0.25em] text-neutral-900 transition-all duration-300 hover:bg-black hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-neutral-900"
+                  style={{ borderColor: "rgba(0,0,0,0.25)" }}
                 >
                   {submitting ? "Sending…" : "Send Message"}
                 </button>
