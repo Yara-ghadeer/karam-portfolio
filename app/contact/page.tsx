@@ -5,10 +5,36 @@ import { useState } from "react";
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSent(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/karamkabbas@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          _subject: form.subject || `New inquiry from ${form.name}`,
+          message: form.message,
+          _template: "table",
+        }),
+      });
+      const data = await res.json();
+      if (data.success === "true" || data.success === true) {
+        setSent(true);
+      } else {
+        setError(data.message || "Something went wrong. Please email me directly.");
+      }
+    } catch {
+      setError("Couldn't send the message. Please email me directly.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const inputStyle = {
@@ -57,7 +83,7 @@ export default function Contact() {
 
             <div className="space-y-8">
               {[
-                { label: "Email", value: "hello@karamkabbas.com" },
+                { label: "Email", value: "karamkabbas@gmail.com" },
                 { label: "Based in", value: "Middle East / Europe" },
                 { label: "Available for", value: "Commissions · Editorial · Events" },
               ].map((item) => (
@@ -137,12 +163,18 @@ export default function Contact() {
                     }}
                   />
                 </div>
+                {error && (
+                  <p className="text-sm" style={{ color: "#b91c1c" }}>
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="border px-10 py-3.5 text-xs uppercase tracking-[0.25em] transition-all duration-300 hover:bg-black hover:text-white"
+                  disabled={submitting}
+                  className="border px-10 py-3.5 text-xs uppercase tracking-[0.25em] transition-all duration-300 hover:bg-black hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current"
                   style={{ borderColor: "rgba(0,0,0,0.25)", color: "#1a1a1a" }}
                 >
-                  Send Message
+                  {submitting ? "Sending…" : "Send Message"}
                 </button>
               </form>
             )}
