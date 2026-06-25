@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 
 export default function About() {
   return (
-    <main className="min-h-screen pt-28 pb-20 px-6">
+    <main className="min-h-screen pt-28 px-6 flex flex-col">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           {/* Left: text */}
