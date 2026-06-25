@@ -179,14 +179,20 @@ export default function Home() {
           © {new Date().getFullYear()} Karam Kabbas
         </span>
         <div className="flex gap-6">
-          {["Instagram", "Behance", "LinkedIn"].map((s) => (
+          {[
+            { label: "Instagram", href: "https://www.instagram.com/karamkabbas/" },
+            { label: "Behance", href: "https://www.behance.net/karamkabbas" },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/karam-kabbas/" },
+          ].map((s) => (
             <a
-              key={s}
-              href="#"
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs uppercase tracking-widest transition-opacity duration-200 hover:opacity-70"
               style={{ color: "rgba(0,0,0,0.4)" }}
             >
-              {s}
+              {s.label}
             </a>
           ))}
         </div>
