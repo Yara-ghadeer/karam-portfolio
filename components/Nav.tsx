@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import Logo from "./Logo";
 
 const links = [
   { href: "/", label: "Home" },
@@ -32,12 +33,8 @@ export default function Nav() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link
-          href="/"
-          className="font-light tracking-[0.25em] uppercase text-sm"
-          style={{ color: "#1a1a1a" }}
-        >
-          Karam Kabbas
+        <Link href="/" aria-label="Karam Kabbas — home" style={{ color: "#1a1a1a" }}>
+          <Logo className="h-9 w-auto" />
         </Link>
 
         {/* Desktop nav */}
