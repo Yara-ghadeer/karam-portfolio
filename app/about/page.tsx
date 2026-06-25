@@ -28,10 +28,9 @@ export default function About() {
                 platforms and industries.
               </p>
               <p>
-                As Senior Photographer and Team Leader at Sardar Group, I direct visual content
-                for leading automotive brands — Toyota, Lexus, Jaguar, Land Rover and more —
-                producing imagery and video for marketing campaigns, social media, and live
-                events.
+                As Senior Photographer at Sardar Group, I direct visual content for leading
+                automotive brands — Toyota, Lexus, Jaguar, Land Rover and more — producing
+                imagery for marketing campaigns, social media, and live events.
               </p>
               <p>
                 Earlier, as a photographer with the UNDP in Syria, I led principal photography
@@ -69,17 +68,6 @@ export default function About() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-              <div
-                className="absolute bottom-0 left-0 right-0 h-1/2"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)" }}
-              />
-              <div className="absolute bottom-8 left-8">
-                <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  Photographer
-                </p>
-                <p className="font-light text-lg" style={{ color: "#fff" }}>Karam Kabbas</p>
-              </div>
-
               {/* Decorative corner */}
               <div
                 className="absolute top-6 right-6 w-12 h-12"
