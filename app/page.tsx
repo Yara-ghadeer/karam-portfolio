@@ -97,7 +97,7 @@ export default function Home() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 border border-transparent px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-black/45 transition-all duration-300 hover:bg-black hover:text-white hover:border-black active:bg-black active:text-white active:border-black"
+              className="inline-flex items-center gap-3 px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-black/45 transition-colors duration-300 hover:text-black"
             >
               Get in Touch →
             </Link>
