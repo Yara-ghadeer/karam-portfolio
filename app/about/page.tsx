@@ -21,22 +21,22 @@ export default function About() {
 
             <div className="space-y-6 text-base font-light leading-relaxed" style={{ color: "rgba(0,0,0,0.6)" }}>
               <p>
-                Karam Kabbas is a photographer and visual storyteller specializing in
+                I&rsquo;m Karam Kabbas, a photographer and visual storyteller specializing in
                 high-quality visual content across photography and videography. Based in
-                Kuala Lumpur, he brings over a decade of experience leading teams and
+                Kuala Lumpur, I bring over a decade of experience leading teams and
                 collaborating with creative professionals to craft engaging visuals across
                 platforms and industries.
               </p>
               <p>
-                As Senior Photographer and Team Leader at Sardar Group, he directs visual
-                content for leading automotive brands — Toyota, Lexus, Jaguar, Land Rover and
-                more — producing imagery and video for marketing campaigns, social media, and
-                live events.
+                As Senior Photographer and Team Leader at Sardar Group, I direct visual content
+                for leading automotive brands — Toyota, Lexus, Jaguar, Land Rover and more —
+                producing imagery and video for marketing campaigns, social media, and live
+                events.
               </p>
               <p>
-                Earlier, as a photographer with the UNDP in Syria, he led principal photography
+                Earlier, as a photographer with the UNDP in Syria, I led principal photography
                 and videography for humanitarian projects including Women For Peace and Cinema
-                of Life, producing short documentaries and success stories. His freelance
+                of Life, producing short documentaries and success stories. My freelance
                 practice, spanning 2013 to 2022, carried each assignment from concept to final
                 delivery.
               </p>
