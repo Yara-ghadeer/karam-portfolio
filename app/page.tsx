@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const categories = [
   {
@@ -6,6 +7,7 @@ const categories = [
     description: "Candid moments and the unscripted rhythm of life in the city.",
     href: "/portfolio?category=street",
     accent: "#2563eb",
+    image: "/street.jpg",
   },
   {
     title: "Automotive",
@@ -120,21 +122,32 @@ export default function Home() {
               className="group relative block overflow-hidden"
               style={{ aspectRatio: "4 / 5" }}
             >
-              {/* Placeholder fill (swap for a real <Image> later) */}
-              <div
-                className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{
-                  background: `linear-gradient(140deg, ${cat.accent}cc 0%, ${cat.accent}80 100%)`,
-                }}
-              />
-              {/* Subtle texture */}
-              <div
-                className="absolute inset-0 opacity-30"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(0,0,0,0.05) 6px, rgba(0,0,0,0.05) 12px)",
-                }}
-              />
+              {/* Real image, or gradient placeholder until one is added */}
+              {cat.image ? (
+                <Image
+                  src={cat.image}
+                  alt={cat.title}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              ) : (
+                <>
+                  <div
+                    className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
+                    style={{
+                      background: `linear-gradient(140deg, ${cat.accent}cc 0%, ${cat.accent}80 100%)`,
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0 opacity-30"
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(0,0,0,0.05) 6px, rgba(0,0,0,0.05) 12px)",
+                    }}
+                  />
+                </>
+              )}
               {/* Legibility gradient */}
               <div
                 className="absolute inset-0"
