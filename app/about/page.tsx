@@ -21,27 +21,31 @@ export default function About() {
 
             <div className="space-y-6 text-base font-light leading-relaxed" style={{ color: "rgba(0,0,0,0.6)" }}>
               <p>
-                Based between mountains and cities, Karam Kabbas is a photographer whose work
-                spans the natural world, the mechanical, and the deeply human. His images chase
-                what most people overlook — the texture of silence, the geometry of motion, the
-                weight of a single moment.
+                Karam Kabbas is a photographer and visual storyteller specializing in
+                high-quality visual content across photography and videography. Based in
+                Kuala Lumpur, he brings over a decade of experience leading teams and
+                collaborating with creative professionals to craft engaging visuals across
+                platforms and industries.
               </p>
               <p>
-                Starting with a film camera at age fourteen, Karam spent years learning to see
-                before learning to shoot. That philosophy still drives his practice: presence
-                first, craft second, gear never.
+                As Senior Photographer and Team Leader at Sardar Group, he directs visual
+                content for leading automotive brands — Toyota, Lexus, Jaguar, Land Rover and
+                more — producing imagery and video for marketing campaigns, social media, and
+                live events.
               </p>
               <p>
-                His documentary work has taken him across the Middle East and Europe. His
-                automotive photography has been featured in regional press. His landscape series
-                continues to grow with each season.
+                Earlier, as a photographer with the UNDP in Syria, he led principal photography
+                and videography for humanitarian projects including Women For Peace and Cinema
+                of Life, producing short documentaries and success stories. His freelance
+                practice, spanning 2013 to 2022, carried each assignment from concept to final
+                delivery.
               </p>
             </div>
 
             <div className="mt-14 grid grid-cols-3 gap-8">
               {[
-                { value: "8+", label: "Years shooting" },
-                { value: "3", label: "Disciplines" },
+                { value: "10+", label: "Years experience" },
+                { value: "6", label: "Disciplines" },
                 { value: "∞", label: "Stories left" },
               ].map((stat) => (
                 <div key={stat.label}>
@@ -58,8 +62,8 @@ export default function About() {
           <div className="lg:sticky lg:top-28">
             <div className="relative w-full aspect-[3/4] overflow-hidden">
               <Image
-                src="/about.jpg"
-                alt="Karam Kabbas photographing on the street at night"
+                src="/about-karam.jpg"
+                alt="Karam Kabbas — black and white portrait"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -87,7 +91,7 @@ export default function About() {
             </div>
 
             <div className="mt-6 space-y-2">
-              {["Available for commissions", "Open to editorial work", "Based in — Middle East / Europe"].map((item) => (
+              {["Available for commissions", "Open to editorial & commercial work", "Based in Kuala Lumpur", "Arabic · English"].map((item) => (
                 <div
                   key={item}
                   className="flex items-center gap-3 text-sm"
