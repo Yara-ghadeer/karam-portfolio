@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import Logo from "./Logo";
 
 const links = [
   { href: "/", label: "Home" },
@@ -40,8 +40,15 @@ export default function Nav() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link href="/" aria-label="Karam Kabbas — home" style={{ color: baseColor, transition: "color 0.3s" }}>
-          <Logo />
+        <Link href="/" aria-label="Karam Kabbas — home" className="block">
+          <Image
+            src="/logo-kk.png"
+            alt="Karam Kabbas"
+            width={120}
+            height={108}
+            priority
+            className="h-11 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}
