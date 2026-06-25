@@ -77,19 +77,6 @@ export default function About() {
                 }}
               />
             </div>
-
-            <div className="mt-6 space-y-2">
-              {["Available for commissions", "Open to editorial & commercial work", "Based in Kuala Lumpur", "Arabic · English"].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 text-sm"
-                  style={{ color: "rgba(0,0,0,0.5)" }}
-                >
-                  <div className="w-1 h-1 rounded-full opacity-40" style={{ background: "#1a1a1a" }} />
-                  {item}
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
