@@ -81,10 +81,9 @@ export default function Home() {
             className="max-w-xl text-base font-light leading-relaxed mb-12"
             style={{ color: "rgba(0,0,0,0.5)" }}
           >
-            Every frame tells a story — of creativity, of collaboration, of
-            results. I make images that inspire: something big, something
-            special, something real. Frozen in the space between a heartbeat
-            and a breath.
+            I make images that tell a story — of people, places, and the
+            moments in between. Every frame is a chance to capture something
+            real.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
