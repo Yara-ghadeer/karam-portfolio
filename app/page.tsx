@@ -58,10 +58,13 @@ export default function Home() {
           <div className="w-16 h-px my-10" style={{ background: "rgba(0,0,0,0.25)" }} />
 
           <p
-            className="max-w-md text-base font-light leading-relaxed mb-12"
+            className="max-w-xl text-base font-light leading-relaxed mb-12"
             style={{ color: "rgba(0,0,0,0.5)" }}
           >
             Every frame tells a story of creativity, collaboration, and results.
+            I make images that inspire — something big, something special,
+            something real — built over a decade of capturing people, places,
+            and the machines that move them.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
