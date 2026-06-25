@@ -79,10 +79,10 @@ export default function Home() {
             className="max-w-xl text-base font-light leading-relaxed mb-12"
             style={{ color: "rgba(0,0,0,0.5)" }}
           >
-            Every frame tells a story of creativity, collaboration, and results.
-            I make images that inspire — something big, something special,
-            something real — where light, motion, and emotion meet in a single
-            moment worth keeping.
+            Every frame tells a story — of creativity, of collaboration, of
+            results. I make images that inspire: something big, something
+            special, something real. The kind of moment frozen in the space
+            between a heartbeat and a breath.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
