@@ -11,8 +11,8 @@ export default function About() {
               About
             </p>
             <h1
-              className="font-light leading-tight mb-10"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.02em", color: "#1a1a1a" }}
+              className="leading-tight mb-10"
+              style={{ fontWeight: 600, fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.03em", color: "#1a1a1a" }}
             >
               Karam
               <br />

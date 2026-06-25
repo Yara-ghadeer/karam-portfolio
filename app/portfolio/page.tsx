@@ -100,13 +100,11 @@ export default function Portfolio() {
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className="px-5 py-2 text-xs uppercase tracking-[0.2em] transition-all duration-200"
-                style={{
-                  background: active === cat ? "rgba(0,0,0,0.05)" : "transparent",
-                  color: active === cat ? "#1a1a1a" : "rgba(0,0,0,0.4)",
-                  border: "1px solid",
-                  borderColor: active === cat ? "rgba(0,0,0,0.25)" : "rgba(0,0,0,0.1)",
-                }}
+                className={`px-5 py-2 text-xs uppercase tracking-[0.2em] border transition-all duration-200 ${
+                  active === cat
+                    ? "bg-black text-white border-black"
+                    : "bg-transparent text-black/40 border-black/10 hover:bg-black hover:text-white hover:border-black"
+                }`}
               >
                 {cat}
               </button>

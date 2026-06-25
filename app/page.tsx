@@ -91,15 +91,13 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-neutral-900 transition-all duration-300 hover:bg-black hover:text-white"
-              style={{ borderColor: "rgba(0,0,0,0.25)" }}
+              className="inline-flex items-center gap-3 border border-black/25 px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-neutral-900 transition-all duration-300 hover:bg-black hover:text-white hover:border-black active:bg-black active:text-white active:border-black"
             >
               View Work
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-colors duration-300 hover:text-black"
-              style={{ color: "rgba(0,0,0,0.45)" }}
+              className="inline-flex items-center gap-3 border border-transparent px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-black/45 transition-all duration-300 hover:bg-black hover:text-white hover:border-black active:bg-black active:text-white active:border-black"
             >
               Get in Touch →
             </Link>
