@@ -4,33 +4,28 @@ type LogoProps = {
 };
 
 /**
- * "KK" monogram for Karam Kabbas.
- * Strokes use `currentColor`, so the logo adapts to whatever
- * text color the parent sets (dark on light header, etc.).
+ * "KK" monogram for Karam Kabbas — two handwritten K's nested into
+ * each other using the script brand font. Inherits the parent's color.
  */
 export default function Logo({ className, title = "Karam Kabbas" }: LogoProps) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 96 64"
+    <span
       role="img"
       aria-label={title}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      style={{
+        fontFamily: "var(--font-script), cursive",
+        fontSize: "2.6rem",
+        lineHeight: 1,
+        display: "inline-flex",
+        alignItems: "baseline",
+        userSelect: "none",
+      }}
     >
-      {/* First K */}
-      <line x1="14" y1="8" x2="14" y2="56" />
-      <path d="M14 33 L37 8" />
-      <path d="M14 33 L37 56" />
-
-      {/* Second K */}
-      <line x1="52" y1="8" x2="52" y2="56" />
-      <path d="M52 33 L75 8" />
-      <path d="M52 33 L75 56" />
-    </svg>
+      <span aria-hidden="true">K</span>
+      <span aria-hidden="true" style={{ marginLeft: "-0.42em" }}>
+        K
+      </span>
+    </span>
   );
 }

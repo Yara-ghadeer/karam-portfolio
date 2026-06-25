@@ -34,7 +34,7 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         <Link href="/" aria-label="Karam Kabbas — home" style={{ color: "#1a1a1a" }}>
-          <Logo className="h-9 w-auto" />
+          <Logo />
         </Link>
 
         {/* Desktop nav */}
