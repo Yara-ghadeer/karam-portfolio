@@ -17,9 +17,9 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Light text/logo over the dark home hero (only while at the top, before
-  // the nav gains its light blurred background on scroll).
-  const lightText = pathname === "/" && !scrolled;
+  // Light text/logo would be used over a dark hero; the home hero is light,
+  // so this stays false. Kept for easy re-enable if the hero goes dark again.
+  const lightText = false;
   const baseColor = lightText ? "#f5f5f0" : "#1a1a1a";
   const activeColor = lightText ? "#ffffff" : "#1a1a1a";
   const dimColor = lightText ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.4)";

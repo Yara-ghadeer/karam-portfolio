@@ -44,21 +44,22 @@ export default function Home() {
     <main>
       {/* Hero */}
       <section
-        className="relative flex flex-col items-center justify-center text-center min-h-screen px-6"
+        className="relative flex flex-col items-center justify-center text-center px-6"
         style={{
-          background: "linear-gradient(180deg, #0a0a0a 0%, #111110 55%, #1a1a18 100%)",
+          minHeight: "88vh",
+          background: "linear-gradient(180deg, #ffffff 0%, #fafaf8 55%, #f2f1ec 100%)",
         }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 50% 45% at 50% 42%, rgba(255,255,255,0.04) 0%, transparent 70%)",
+              "radial-gradient(ellipse 50% 45% at 50% 42%, rgba(0,0,0,0.02) 0%, transparent 70%)",
           }}
         />
 
         <div className="relative flex flex-col items-center max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.5em] mb-10" style={{ color: "rgba(255,255,255,0.45)" }}>
+          <p className="text-xs uppercase tracking-[0.5em] mb-10" style={{ color: "rgba(0,0,0,0.4)" }}>
             Visual Storyteller
           </p>
 
@@ -68,17 +69,17 @@ export default function Home() {
               fontWeight: 600,
               fontSize: "clamp(3rem, 9vw, 8rem)",
               letterSpacing: "-0.03em",
-              color: "#f5f5f0",
+              color: "#1a1a1a",
             }}
           >
             Karam Kabbas
           </h1>
 
-          <div className="w-16 h-px my-10" style={{ background: "rgba(255,255,255,0.3)" }} />
+          <div className="w-16 h-px my-10" style={{ background: "rgba(0,0,0,0.25)" }} />
 
           <p
             className="max-w-xl text-base font-light leading-relaxed mb-12"
-            style={{ color: "rgba(255,255,255,0.6)" }}
+            style={{ color: "rgba(0,0,0,0.5)" }}
           >
             Every frame tells a story — of creativity, of collaboration, of
             results. I make images that inspire: something big, something
@@ -89,89 +90,71 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-white transition-all duration-300 hover:bg-white hover:text-black"
-              style={{ borderColor: "rgba(255,255,255,0.3)" }}
+              className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-neutral-900 transition-all duration-300 hover:bg-black hover:text-white"
+              style={{ borderColor: "rgba(0,0,0,0.25)" }}
             >
               View Work
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-colors duration-300 hover:text-white"
-              style={{ color: "rgba(255,255,255,0.5)" }}
+              className="inline-flex items-center gap-3 px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-colors duration-300 hover:text-black"
+              style={{ color: "rgba(0,0,0,0.45)" }}
             >
               Get in Touch →
             </Link>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ opacity: 0.4, color: "#f5f5f0" }}>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ opacity: 0.3, color: "#1a1a1a" }}>
           <span style={{ fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase" }}>Scroll</span>
-          <div className="w-px h-8" style={{ background: "linear-gradient(to bottom, #f5f5f0, transparent)" }} />
+          <div className="w-px h-8" style={{ background: "linear-gradient(to bottom, #1a1a1a, transparent)" }} />
         </div>
       </section>
 
-      {/* Category showcase */}
-      <section className="max-w-7xl mx-auto px-6 py-28">
-        <p className="text-xs uppercase tracking-[0.4em] mb-14" style={{ color: "rgba(0,0,0,0.35)" }}>
-          Disciplines
-        </p>
-        <div className="flex flex-col gap-16 md:gap-8">
-          {categories.map((cat, i) => {
-            const alignEnd = i % 2 === 1;
-            return (
-              <Link
-                key={cat.title}
-                href={cat.href}
-                className={`group relative block w-full md:w-3/4 ${
-                  alignEnd ? "md:ml-auto md:text-right" : "md:mr-auto"
-                }`}
-              >
-                <div
-                  className={`flex items-baseline gap-6 ${
-                    alignEnd ? "md:flex-row-reverse" : ""
-                  }`}
-                >
-                  <span
-                    className="font-light leading-none select-none transition-colors duration-500"
-                    style={{
-                      fontSize: "clamp(3rem, 7vw, 6rem)",
-                      color: "rgba(0,0,0,0.08)",
-                    }}
-                  >
-                    0{i + 1}
-                  </span>
-                  <div className={alignEnd ? "md:text-right" : ""}>
-                    <div
-                      className={`h-px mb-5 transition-all duration-500 w-10 group-hover:w-20 ${
-                        alignEnd ? "md:ml-auto" : ""
-                      }`}
-                      style={{ background: cat.accent }}
-                    />
-                    <h2
-                      className="text-3xl md:text-4xl font-light tracking-wide mb-3 transition-transform duration-500 group-hover:translate-x-0"
-                      style={{ color: "#1a1a1a" }}
-                    >
-                      {cat.title}
-                    </h2>
-                    <p
-                      className="text-sm leading-relaxed max-w-md"
-                      style={{ color: "rgba(0,0,0,0.5)" }}
-                    >
-                      {cat.description}
-                    </p>
-                    <span
-                      className={`inline-flex items-center gap-2 mt-6 text-xs uppercase tracking-[0.2em] opacity-50 transition-all duration-300 group-hover:opacity-100 ${
-                        alignEnd ? "md:flex-row-reverse" : ""
-                      }`}
-                      style={{ color: cat.accent }}
-                    >
-                      Explore →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+      {/* Full-bleed work grid */}
+      <section className="w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-0">
+          {categories.map((cat) => (
+            <Link
+              key={cat.title}
+              href={cat.href}
+              className="group relative block overflow-hidden"
+              style={{ aspectRatio: "4 / 5" }}
+            >
+              {/* Placeholder fill (swap for a real <Image> later) */}
+              <div
+                className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{
+                  background: `linear-gradient(140deg, ${cat.accent}cc 0%, ${cat.accent}80 100%)`,
+                }}
+              />
+              {/* Subtle texture */}
+              <div
+                className="absolute inset-0 opacity-30"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(0,0,0,0.05) 6px, rgba(0,0,0,0.05) 12px)",
+                }}
+              />
+              {/* Legibility gradient */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 45%, transparent 70%)",
+                }}
+              />
+              {/* Label */}
+              <div className="absolute bottom-0 left-0 p-5 md:p-7">
+                <h2 className="text-white text-xl md:text-3xl font-light tracking-wide">
+                  {cat.title}
+                </h2>
+                <span className="block mt-2 text-[10px] uppercase tracking-[0.3em] text-white opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-90 group-hover:translate-x-0">
+                  Explore →
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
