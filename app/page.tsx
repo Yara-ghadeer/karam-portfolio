@@ -81,8 +81,8 @@ export default function Home() {
           >
             Every frame tells a story — of creativity, of collaboration, of
             results. I make images that inspire: something big, something
-            special, something real. The kind of moment frozen in the space
-            between a heartbeat and a breath.
+            special, something real. Frozen in the space between a heartbeat
+            and a breath.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
