@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Footer from "@/components/Footer";
 
 const categories = [
   "All",
@@ -157,6 +158,7 @@ export default function Portfolio() {
           ))}
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

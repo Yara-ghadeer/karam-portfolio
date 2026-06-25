@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function About() {
   return (
@@ -80,6 +81,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
