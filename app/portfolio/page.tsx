@@ -2,29 +2,43 @@
 
 import { useState } from "react";
 
-const categories = ["All", "Nature", "Automotive", "Documentary"];
+const categories = [
+  "All",
+  "Street Photography",
+  "Automotive",
+  "Portraits",
+  "Food",
+  "Events",
+  "Wedding",
+];
 
 const photos = [
-  { id: 1, category: "Nature", title: "Golden Hour Ridge", aspect: "tall" },
+  { id: 1, category: "Street Photography", title: "Crosswalk", aspect: "tall" },
   { id: 2, category: "Automotive", title: "Carbon Detail", aspect: "wide" },
-  { id: 3, category: "Documentary", title: "Market at Dawn", aspect: "tall" },
-  { id: 4, category: "Nature", title: "Storm Break", aspect: "wide" },
-  { id: 5, category: "Automotive", title: "Velocity", aspect: "tall" },
-  { id: 6, category: "Documentary", title: "The Wait", aspect: "wide" },
-  { id: 7, category: "Nature", title: "Fog Valley", aspect: "wide" },
-  { id: 8, category: "Automotive", title: "Engine Breath", aspect: "tall" },
-  { id: 9, category: "Documentary", title: "Hands at Work", aspect: "tall" },
-  { id: 10, category: "Nature", title: "Tide Lines", aspect: "wide" },
-  { id: 11, category: "Automotive", title: "Midnight Run", aspect: "tall" },
-  { id: 12, category: "Documentary", title: "City Silence", aspect: "wide" },
+  { id: 3, category: "Portraits", title: "Quiet Gaze", aspect: "tall" },
+  { id: 4, category: "Food", title: "Plated", aspect: "wide" },
+  { id: 5, category: "Events", title: "Stage Lights", aspect: "tall" },
+  { id: 6, category: "Wedding", title: "First Dance", aspect: "wide" },
+  { id: 7, category: "Street Photography", title: "Rainy Avenue", aspect: "wide" },
+  { id: 8, category: "Automotive", title: "Midnight Run", aspect: "tall" },
+  { id: 9, category: "Portraits", title: "Window Light", aspect: "tall" },
+  { id: 10, category: "Food", title: "Fresh Catch", aspect: "wide" },
+  { id: 11, category: "Events", title: "The Crowd", aspect: "tall" },
+  { id: 12, category: "Wedding", title: "Vows", aspect: "wide" },
+  { id: 13, category: "Street Photography", title: "Market Lane", aspect: "tall" },
+  { id: 14, category: "Automotive", title: "Velocity", aspect: "wide" },
+  { id: 15, category: "Portraits", title: "Studio Mono", aspect: "tall" },
+  { id: 16, category: "Food", title: "Morning Brew", aspect: "wide" },
+  { id: 17, category: "Events", title: "Confetti", aspect: "wide" },
+  { id: 18, category: "Wedding", title: "Golden Toast", aspect: "tall" },
 ];
 
 const gradients: Record<string, string[]> = {
-  Nature: [
-    "linear-gradient(135deg, #d7ebd7 0%, #b8d8b8 100%)",
-    "linear-gradient(135deg, #c8e6c8 0%, #a3cfa3 100%)",
-    "linear-gradient(135deg, #e0f0e0 0%, #c2ddc2 100%)",
-    "linear-gradient(135deg, #cfe8cf 0%, #aed4ae 100%)",
+  "Street Photography": [
+    "linear-gradient(135deg, #d4e0f0 0%, #b0c8e6 100%)",
+    "linear-gradient(135deg, #cdddf0 0%, #a8c5e8 100%)",
+    "linear-gradient(135deg, #dae4f2 0%, #bcd0ed 100%)",
+    "linear-gradient(135deg, #d0dcf0 0%, #aec8e6 100%)",
   ],
   Automotive: [
     "linear-gradient(135deg, #f0ddc8 0%, #e0c2a0 100%)",
@@ -32,16 +46,34 @@ const gradients: Record<string, string[]> = {
     "linear-gradient(135deg, #ecd6bf 0%, #d9bd96 100%)",
     "linear-gradient(135deg, #f1dcc2 0%, #e0c09a 100%)",
   ],
-  Documentary: [
-    "linear-gradient(135deg, #d4e0f0 0%, #b0c8e6 100%)",
-    "linear-gradient(135deg, #cdddf0 0%, #a8c5e8 100%)",
-    "linear-gradient(135deg, #dae4f2 0%, #bcd0ed 100%)",
-    "linear-gradient(135deg, #d0dcf0 0%, #aec8e6 100%)",
+  Portraits: [
+    "linear-gradient(135deg, #e8dcf0 0%, #d2bce6 100%)",
+    "linear-gradient(135deg, #ecdef2 0%, #d8c2ed 100%)",
+    "linear-gradient(135deg, #e2d4ec 0%, #c9aede 100%)",
+    "linear-gradient(135deg, #ebddf0 0%, #d4bce6 100%)",
+  ],
+  Food: [
+    "linear-gradient(135deg, #f0d4d4 0%, #e6b0b0 100%)",
+    "linear-gradient(135deg, #f2cdcd 0%, #e8a8a8 100%)",
+    "linear-gradient(135deg, #f0dad4 0%, #e6bcae 100%)",
+    "linear-gradient(135deg, #f0d0cc 0%, #e6aea3 100%)",
+  ],
+  Events: [
+    "linear-gradient(135deg, #cfeaf0 0%, #a3d8e6 100%)",
+    "linear-gradient(135deg, #cce8f2 0%, #a8d2ed 100%)",
+    "linear-gradient(135deg, #d4eef0 0%, #aedee6 100%)",
+    "linear-gradient(135deg, #c8e6f0 0%, #9ed2e6 100%)",
+  ],
+  Wedding: [
+    "linear-gradient(135deg, #f0d4e4 0%, #e6b0cf 100%)",
+    "linear-gradient(135deg, #f2cddd 0%, #e8a8c8 100%)",
+    "linear-gradient(135deg, #f0dae8 0%, #e6bcd6 100%)",
+    "linear-gradient(135deg, #f0d0e0 0%, #e6aecb 100%)",
   ],
 };
 
 function getGradient(category: string, id: number) {
-  const list = gradients[category] ?? gradients.Nature;
+  const list = gradients[category] ?? gradients["Street Photography"];
   return list[id % list.length];
 }
 

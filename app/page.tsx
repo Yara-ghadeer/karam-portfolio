@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const categories = [
   {
-    title: "Nature",
-    description: "Landscapes, wilderness, and the raw beauty of the natural world.",
-    href: "/portfolio?category=nature",
-    accent: "#059669",
+    title: "Street Photography",
+    description: "Candid moments and the unscripted rhythm of life in the city.",
+    href: "/portfolio?category=street",
+    accent: "#2563eb",
   },
   {
     title: "Automotive",
@@ -14,10 +14,28 @@ const categories = [
     accent: "#ea580c",
   },
   {
-    title: "Documentary",
-    description: "Real moments, real stories — humanity in its truest form.",
-    href: "/portfolio?category=documentary",
-    accent: "#2563eb",
+    title: "Portraits",
+    description: "Faces and feeling — capturing character in a single frame.",
+    href: "/portfolio?category=portraits",
+    accent: "#9333ea",
+  },
+  {
+    title: "Food",
+    description: "Texture, color, and craft — making every dish irresistible.",
+    href: "/portfolio?category=food",
+    accent: "#dc2626",
+  },
+  {
+    title: "Events",
+    description: "Energy and atmosphere — the story of a moment as it unfolds.",
+    href: "/portfolio?category=events",
+    accent: "#0891b2",
+  },
+  {
+    title: "Wedding",
+    description: "Love, emotion, and the details that make a day unforgettable.",
+    href: "/portfolio?category=wedding",
+    accent: "#db2777",
   },
 ];
 
