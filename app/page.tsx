@@ -81,8 +81,8 @@ export default function Home() {
           >
             Every frame tells a story of creativity, collaboration, and results.
             I make images that inspire — something big, something special,
-            something real — built over a decade of capturing people, places,
-            and the machines that move them.
+            something real — where light, motion, and emotion meet in a single
+            moment worth keeping.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
