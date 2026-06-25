@@ -170,19 +170,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote */}
-      <section className="py-32 px-6 text-center" style={{ borderTop: "1px solid rgba(0,0,0,0.07)" }}>
-        <blockquote
-          className="font-light italic max-w-2xl mx-auto leading-relaxed"
-          style={{
-            fontSize: "clamp(1.2rem, 2.5vw, 1.75rem)",
-            color: "rgba(0,0,0,0.35)",
-          }}
-        >
-          &ldquo;Every frame is a decision. Every light is a choice. Every story deserves to be told.&rdquo;
-        </blockquote>
-      </section>
-
       {/* Footer */}
       <footer
         className="px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4"
