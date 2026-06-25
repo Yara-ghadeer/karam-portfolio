@@ -23,7 +23,7 @@ export default function About() {
               <p>
                 I&rsquo;m Karam Kabbas, a photographer and visual storyteller specializing in
                 high-quality visual content across photography and videography. Based in
-                Kuala Lumpur, I bring over a decade of experience leading teams and
+                Kuala Lumpur, Malaysia, I bring over a decade of experience leading teams and
                 collaborating with creative professionals to craft engaging visuals across
                 platforms and industries.
               </p>

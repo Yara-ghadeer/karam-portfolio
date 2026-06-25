@@ -84,7 +84,7 @@ export default function Contact() {
             <div className="space-y-8">
               {[
                 { label: "Email", value: "karamkabbas@gmail.com" },
-                { label: "Based in", value: "Kuala Lumpur" },
+                { label: "Based in", value: "Kuala Lumpur, Malaysia" },
                 { label: "Available for", value: "Commissions · Editorial · Events" },
               ].map((item) => (
                 <div key={item.label}>
