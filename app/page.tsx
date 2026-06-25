@@ -46,19 +46,19 @@ export default function Home() {
       <section
         className="relative flex flex-col items-center justify-center text-center min-h-screen px-6"
         style={{
-          background: "linear-gradient(180deg, #ffffff 0%, #fafaf8 55%, #f2f1ec 100%)",
+          background: "linear-gradient(180deg, #0a0a0a 0%, #111110 55%, #1a1a18 100%)",
         }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 50% 45% at 50% 42%, rgba(0,0,0,0.02) 0%, transparent 70%)",
+              "radial-gradient(ellipse 50% 45% at 50% 42%, rgba(255,255,255,0.04) 0%, transparent 70%)",
           }}
         />
 
         <div className="relative flex flex-col items-center max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.5em] mb-10" style={{ color: "rgba(0,0,0,0.4)" }}>
+          <p className="text-xs uppercase tracking-[0.5em] mb-10" style={{ color: "rgba(255,255,255,0.45)" }}>
             Visual Storyteller
           </p>
 
@@ -67,17 +67,17 @@ export default function Home() {
             style={{
               fontSize: "clamp(3rem, 9vw, 8rem)",
               letterSpacing: "-0.02em",
-              color: "#1a1a1a",
+              color: "#f5f5f0",
             }}
           >
             Karam Kabbas
           </h1>
 
-          <div className="w-16 h-px my-10" style={{ background: "rgba(0,0,0,0.25)" }} />
+          <div className="w-16 h-px my-10" style={{ background: "rgba(255,255,255,0.3)" }} />
 
           <p
             className="max-w-xl text-base font-light leading-relaxed mb-12"
-            style={{ color: "rgba(0,0,0,0.5)" }}
+            style={{ color: "rgba(255,255,255,0.6)" }}
           >
             Every frame tells a story — of creativity, of collaboration, of
             results. I make images that inspire: something big, something
@@ -88,24 +88,24 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-neutral-900 transition-all duration-300 hover:bg-black hover:text-white"
-              style={{ borderColor: "rgba(0,0,0,0.25)" }}
+              className="inline-flex items-center gap-3 border px-8 py-3.5 text-xs uppercase tracking-[0.25em] text-white transition-all duration-300 hover:bg-white hover:text-black"
+              style={{ borderColor: "rgba(255,255,255,0.3)" }}
             >
               View Work
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-colors duration-300 hover:text-black"
-              style={{ color: "rgba(0,0,0,0.45)" }}
+              className="inline-flex items-center gap-3 px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-colors duration-300 hover:text-white"
+              style={{ color: "rgba(255,255,255,0.5)" }}
             >
               Get in Touch →
             </Link>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ opacity: 0.3, color: "#1a1a1a" }}>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ opacity: 0.4, color: "#f5f5f0" }}>
           <span style={{ fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase" }}>Scroll</span>
-          <div className="w-px h-8" style={{ background: "linear-gradient(to bottom, #1a1a1a, transparent)" }} />
+          <div className="w-px h-8" style={{ background: "linear-gradient(to bottom, #f5f5f0, transparent)" }} />
         </div>
       </section>
 

@@ -17,6 +17,13 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Light text/logo over the dark home hero (only while at the top, before
+  // the nav gains its light blurred background on scroll).
+  const lightText = pathname === "/" && !scrolled;
+  const baseColor = lightText ? "#f5f5f0" : "#1a1a1a";
+  const activeColor = lightText ? "#ffffff" : "#1a1a1a";
+  const dimColor = lightText ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.4)";
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -33,7 +40,7 @@ export default function Nav() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link href="/" aria-label="Karam Kabbas — home" style={{ color: "#1a1a1a" }}>
+        <Link href="/" aria-label="Karam Kabbas — home" style={{ color: baseColor, transition: "color 0.3s" }}>
           <Logo />
         </Link>
 
@@ -45,7 +52,7 @@ export default function Nav() {
               href={href}
               className="text-xs uppercase tracking-[0.2em] transition-colors duration-200"
               style={{
-                color: pathname === href ? "#1a1a1a" : "rgba(0,0,0,0.4)",
+                color: pathname === href ? activeColor : dimColor,
               }}
             >
               {label}
@@ -61,15 +68,15 @@ export default function Nav() {
         >
           <span
             className="block w-5 h-px transition-all duration-300"
-            style={{ background: "#1a1a1a", transform: menuOpen ? "rotate(45deg) translate(3px, 3px)" : "none" }}
+            style={{ background: menuOpen ? "#1a1a1a" : baseColor, transform: menuOpen ? "rotate(45deg) translate(3px, 3px)" : "none" }}
           />
           <span
             className="block w-5 h-px transition-all duration-300"
-            style={{ background: "#1a1a1a", opacity: menuOpen ? 0 : 1 }}
+            style={{ background: menuOpen ? "#1a1a1a" : baseColor, opacity: menuOpen ? 0 : 1 }}
           />
           <span
             className="block w-5 h-px transition-all duration-300"
-            style={{ background: "#1a1a1a", transform: menuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none" }}
+            style={{ background: menuOpen ? "#1a1a1a" : baseColor, transform: menuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none" }}
           />
         </button>
       </div>
