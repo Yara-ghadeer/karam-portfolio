@@ -61,8 +61,7 @@ export default function Home() {
             className="max-w-md text-base font-light leading-relaxed mb-12"
             style={{ color: "rgba(0,0,0,0.5)" }}
           >
-            Capturing the extraordinary in nature, the precision of machines,
-            and the depth of human stories.
+            Every frame tells a story of creativity, collaboration, and results.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
