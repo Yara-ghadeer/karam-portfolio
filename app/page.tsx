@@ -64,10 +64,10 @@ export default function Home() {
           </p>
 
           <h1
-            className="leading-none mb-2"
+            className="leading-none mb-2 whitespace-nowrap"
             style={{
               fontWeight: 600,
-              fontSize: "clamp(3rem, 9vw, 8rem)",
+              fontSize: "clamp(2.25rem, 8vw, 6rem)",
               letterSpacing: "-0.03em",
               color: "#1a1a1a",
             }}
