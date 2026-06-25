@@ -6,7 +6,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="px-6 py-10" style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+    <footer className="px-6 py-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <span className="text-xs tracking-[0.2em] uppercase" style={{ color: "rgba(0,0,0,0.35)" }}>
           © {new Date().getFullYear()} Karam Kabbas
