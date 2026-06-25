@@ -65,9 +65,9 @@ export default function Home() {
           <h1
             className="leading-none mb-2"
             style={{
-              fontFamily: "var(--font-typewriter), monospace",
-              fontSize: "clamp(2.4rem, 7vw, 6rem)",
-              letterSpacing: "0.01em",
+              fontWeight: 600,
+              fontSize: "clamp(3rem, 9vw, 8rem)",
+              letterSpacing: "-0.03em",
               color: "#f5f5f0",
             }}
           >
