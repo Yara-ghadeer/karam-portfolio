@@ -26,7 +26,8 @@ export default function About() {
                 high-quality visual content across photography and videography. Based in
                 Kuala Lumpur, Malaysia, I bring over a decade of experience leading teams and
                 collaborating with creative professionals to craft engaging visuals across
-                platforms and industries.
+                platforms and industries. I&rsquo;m available for projects worldwide — on
+                location or remotely.
               </p>
               <p>
                 As Senior Photographer at Sardar Group, I direct visual content for leading

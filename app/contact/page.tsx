@@ -85,8 +85,8 @@ export default function Contact() {
               {[
                 { label: "Email", value: "karamkabbas@gmail.com", href: "mailto:karamkabbas@gmail.com" },
                 { label: "Phone", value: "+60 11-6615 5769", href: "tel:+601166155769" },
-                { label: "Based in", value: "Kuala Lumpur, Malaysia" },
-                { label: "Available for", value: "Commissions · Editorial · Events" },
+                { label: "Based in", value: "Kuala Lumpur, Malaysia · Available worldwide" },
+                { label: "Available for", value: "Commissions · Editorial · Events · Remote" },
               ].map((item) => (
                 <div key={item.label}>
                   <span
