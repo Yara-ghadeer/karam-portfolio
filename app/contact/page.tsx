@@ -83,8 +83,8 @@ export default function Contact() {
 
             <div className="space-y-8">
               {[
-                { label: "Email", value: "karamkabbas@gmail.com" },
-                { label: "Phone", value: "+60 11-6615 5769" },
+                { label: "Email", value: "karamkabbas@gmail.com", href: "mailto:karamkabbas@gmail.com" },
+                { label: "Phone", value: "+60 11-6615 5769", href: "tel:+601166155769" },
                 { label: "Based in", value: "Kuala Lumpur, Malaysia" },
                 { label: "Available for", value: "Commissions · Editorial · Events" },
               ].map((item) => (
@@ -95,9 +95,19 @@ export default function Contact() {
                   >
                     {item.label}
                   </span>
-                  <span className="text-sm font-light" style={{ color: "rgba(0,0,0,0.7)" }}>
-                    {item.value}
-                  </span>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-sm font-light transition-opacity duration-200 hover:opacity-60"
+                      style={{ color: "rgba(0,0,0,0.7)" }}
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="text-sm font-light" style={{ color: "rgba(0,0,0,0.7)" }}>
+                      {item.value}
+                    </span>
+                  )}
                 </div>
               ))}
 
