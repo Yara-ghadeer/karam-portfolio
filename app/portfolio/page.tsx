@@ -88,6 +88,7 @@ function getGradient(category: string, id: number) {
 
 export default function Portfolio() {
   const [active, setActive] = useState("All");
+  const [lightbox, setLightbox] = useState<Photo | null>(null);
 
   const filtered = active === "All" ? photos : photos.filter((p) => p.category === active);
 
@@ -126,55 +127,82 @@ export default function Portfolio() {
           {filtered.map((photo) => (
             <div
               key={photo.id}
+              onClick={() => photo.image && setLightbox(photo)}
               className="break-inside-avoid group relative overflow-hidden cursor-pointer"
               style={{
                 background: getGradient(photo.category, photo.id),
                 height: photo.aspect === "tall" ? "420px" : "280px",
               }}
             >
-              {/* Real photo, if available */}
-              {photo.image && (
+              {photo.image ? (
+                /* Real photo — no text on hover, click to open full size */
                 <img
                   src={photo.image}
                   alt={photo.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
+              ) : (
+                <>
+                  {/* Placeholder visual noise */}
+                  <div
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
+                    }}
+                  />
+
+                  {/* Hover overlay */}
+                  <div
+                    className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }}
+                  >
+                    <span
+                      className="text-xs uppercase tracking-[0.2em] mb-1"
+                      style={{ color: "rgba(255,255,255,0.4)" }}
+                    >
+                      {photo.category}
+                    </span>
+                    <span className="text-base font-light text-white">{photo.title}</span>
+                  </div>
+
+                  {/* Category badge */}
+                  <div
+                    className="absolute top-4 left-4 text-xs uppercase tracking-widest opacity-50 group-hover:opacity-0 transition-opacity duration-300"
+                    style={{ fontSize: "10px", color: "rgba(0,0,0,0.6)" }}
+                  >
+                    {photo.category}
+                  </div>
+                </>
               )}
-
-              {/* Placeholder visual noise */}
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
-                }}
-              />
-
-              {/* Hover overlay */}
-              <div
-                className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }}
-              >
-                <span
-                  className="text-xs uppercase tracking-[0.2em] mb-1"
-                  style={{ color: "rgba(255,255,255,0.4)" }}
-                >
-                  {photo.category}
-                </span>
-                <span className="text-base font-light text-white">{photo.title}</span>
-              </div>
-
-              {/* Category badge */}
-              <div
-                className="absolute top-4 left-4 text-xs uppercase tracking-widest opacity-50 group-hover:opacity-0 transition-opacity duration-300"
-                style={{ fontSize: "10px", color: "rgba(0,0,0,0.6)" }}
-              >
-                {photo.category}
-              </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Lightbox popup */}
+      {lightbox?.image && (
+        <div
+          onClick={() => setLightbox(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 cursor-zoom-out"
+          style={{ background: "rgba(0,0,0,0.9)" }}
+        >
+          <button
+            onClick={() => setLightbox(null)}
+            aria-label="Close"
+            className="absolute top-6 right-6 text-white/60 hover:text-white text-3xl font-light leading-none"
+          >
+            &times;
+          </button>
+          <img
+            src={lightbox.image}
+            alt={lightbox.title}
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-full max-h-[90vh] object-contain cursor-default"
+          />
+        </div>
+      )}
+
       <Footer />
     </main>
   );
