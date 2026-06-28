@@ -135,12 +135,30 @@ export default function Portfolio() {
               }}
             >
               {photo.image ? (
-                /* Real photo — no text on hover, click to open full size */
-                <img
-                  src={photo.image}
-                  alt={photo.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                /* Real photo — clickable: subtle zoom + expand icon on hover */
+                <>
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "rgba(0,0,0,0.25)" }}
+                  >
+                    <span
+                      className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
+                      style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.5)" }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 3h6v6" />
+                        <path d="M9 21H3v-6" />
+                        <path d="M21 3l-7 7" />
+                        <path d="M3 21l7-7" />
+                      </svg>
+                    </span>
+                  </div>
+                </>
               ) : (
                 <>
                   {/* Placeholder visual noise */}
