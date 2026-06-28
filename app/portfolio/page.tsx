@@ -127,7 +127,7 @@ export default function Portfolio() {
           {filtered.map((photo) => (
             <div
               key={photo.id}
-              onClick={() => photo.image && setLightbox(photo)}
+              onClick={() => setLightbox(photo)}
               className="break-inside-avoid group relative overflow-hidden cursor-pointer"
               style={{
                 background: getGradient(photo.category, photo.id),
@@ -161,7 +161,7 @@ export default function Portfolio() {
                 </>
               ) : (
                 <>
-                  {/* Placeholder visual noise */}
+                  {/* Empty placeholder — no text, clickable: expand icon on hover */}
                   <div
                     className="absolute inset-0 opacity-20"
                     style={{
@@ -169,27 +169,21 @@ export default function Portfolio() {
                         "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
                     }}
                   />
-
-                  {/* Hover overlay */}
                   <div
-                    className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }}
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "rgba(0,0,0,0.15)" }}
                   >
                     <span
-                      className="text-xs uppercase tracking-[0.2em] mb-1"
-                      style={{ color: "rgba(255,255,255,0.4)" }}
+                      className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
+                      style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.6)" }}
                     >
-                      {photo.category}
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 3h6v6" />
+                        <path d="M9 21H3v-6" />
+                        <path d="M21 3l-7 7" />
+                        <path d="M3 21l7-7" />
+                      </svg>
                     </span>
-                    <span className="text-base font-light text-white">{photo.title}</span>
-                  </div>
-
-                  {/* Category badge */}
-                  <div
-                    className="absolute top-4 left-4 text-xs uppercase tracking-widest opacity-50 group-hover:opacity-0 transition-opacity duration-300"
-                    style={{ fontSize: "10px", color: "rgba(0,0,0,0.6)" }}
-                  >
-                    {photo.category}
                   </div>
                 </>
               )}
@@ -199,7 +193,7 @@ export default function Portfolio() {
       </div>
 
       {/* Lightbox popup */}
-      {lightbox?.image && (
+      {lightbox && (
         <div
           onClick={() => setLightbox(null)}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 cursor-zoom-out"
@@ -212,12 +206,24 @@ export default function Portfolio() {
           >
             &times;
           </button>
-          <img
-            src={lightbox.image}
-            alt={lightbox.title}
-            onClick={(e) => e.stopPropagation()}
-            className="max-w-full max-h-[90vh] object-contain cursor-default"
-          />
+          {lightbox.image ? (
+            <img
+              src={lightbox.image}
+              alt={lightbox.title}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-full max-h-[90vh] object-contain cursor-default"
+            />
+          ) : (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="cursor-default"
+              style={{
+                width: "min(90vw, 1100px)",
+                height: "min(80vh, 720px)",
+                background: getGradient(lightbox.category, lightbox.id),
+              }}
+            />
+          )}
         </div>
       )}
 
