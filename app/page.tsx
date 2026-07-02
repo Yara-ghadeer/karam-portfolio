@@ -28,6 +28,7 @@ const categories = [
     description: "Texture, color, and craft — making every dish irresistible.",
     href: "/portfolio?category=food",
     accent: "#dc2626",
+    image: "/food-karam-15-untitled-8-of-12.jpg",
   },
   {
     title: "Events",
