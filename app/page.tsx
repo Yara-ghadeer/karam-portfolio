@@ -8,7 +8,7 @@ const categories = [
     description: "Candid moments and the unscripted rhythm of life in the city.",
     href: "/portfolio?category=street",
     accent: "#2563eb",
-    image: "/street.jpg",
+    image: "/street-karam-01-342442343-1.jpg",
   },
   {
     title: "Automotive",
