@@ -19,6 +19,8 @@ type Photo = {
   title: string;
   aspect: "tall" | "wide";
   image?: string;
+  /** CSS object-position for the grid thumbnail, so a cropped preview still centers on the car */
+  focus?: string;
 };
 
 const photos: Photo[] = [
@@ -28,36 +30,34 @@ const photos: Photo[] = [
   { id: 5, category: "Events", title: "Stage Lights", aspect: "tall" },
   { id: 6, category: "Wedding", title: "First Dance", aspect: "wide" },
   { id: 7, category: "Street Photography", title: "Rainy Avenue", aspect: "wide" },
-  { id: 8, category: "Automotive", title: "Midnight Run", aspect: "tall" },
   { id: 9, category: "Portraits", title: "Window Light", aspect: "tall" },
   { id: 10, category: "Food", title: "Fresh Catch", aspect: "wide" },
   { id: 11, category: "Events", title: "The Crowd", aspect: "tall" },
   { id: 12, category: "Wedding", title: "Vows", aspect: "wide" },
   { id: 13, category: "Street Photography", title: "Market Lane", aspect: "tall" },
-  { id: 14, category: "Automotive", title: "Velocity", aspect: "wide" },
   { id: 15, category: "Portraits", title: "Studio Mono", aspect: "tall" },
   { id: 16, category: "Food", title: "Morning Brew", aspect: "wide" },
   { id: 17, category: "Events", title: "Confetti", aspect: "wide" },
   { id: 18, category: "Wedding", title: "Golden Toast", aspect: "tall" },
-  { id: 19, category: "Automotive", title: "Golden Hour Arrival", aspect: "wide", image: "/automotive-karam-01-exterior-details-1-of-12.jpg" },
-  { id: 20, category: "Automotive", title: "Twilight Convoy", aspect: "wide", image: "/automotive-karam-02-exterior-details-6-of-12.jpg" },
-  { id: 21, category: "Automotive", title: "Colosseum Drive", aspect: "wide", image: "/automotive-karam-03-exterior-1.jpg" },
-  { id: 22, category: "Automotive", title: "Studio Reflection", aspect: "tall", image: "/automotive-karam-04-exterior-2.jpg" },
-  { id: 23, category: "Automotive", title: "Sunset Boulevard", aspect: "wide", image: "/automotive-karam-05-sv-lwb-5-of-7.jpg" },
-  { id: 24, category: "Automotive", title: "Snowbound", aspect: "wide", image: "/automotive-karam-06-untitled-1-of-41.jpg" },
-  { id: 25, category: "Automotive", title: "Black Edition", aspect: "tall", image: "/automotive-karam-07-untitled-2-of-25.jpg" },
-  { id: 26, category: "Automotive", title: "Night Runner", aspect: "wide", image: "/automotive-karam-08-untitled-2-of-32.jpg" },
-  { id: 27, category: "Automotive", title: "Desert Palms", aspect: "wide", image: "/automotive-karam-09-untitled-37-of-38.jpg" },
-  { id: 28, category: "Automotive", title: "Rear Profile", aspect: "tall", image: "/automotive-karam-10-untitled-4-of-32.jpg" },
-  { id: 29, category: "Automotive", title: "Underground", aspect: "wide", image: "/automotive-karam-11-untitled-5-of-14.jpg" },
-  { id: 30, category: "Automotive", title: "Modern Facade", aspect: "wide", image: "/automotive-karam-12-untitled-5-of-23.jpg" },
-  { id: 31, category: "Automotive", title: "Face Forward", aspect: "tall", image: "/automotive-karam-13-untitled-7-of-19.jpg" },
-  { id: 32, category: "Automotive", title: "Copper Glow", aspect: "wide", image: "/automotive-karam-14-untitled-8-of-12.jpg" },
-  { id: 33, category: "Automotive", title: "Dust Trail", aspect: "wide", image: "/automotive-karam-15-untitled-9-of-23.jpg" },
-  { id: 34, category: "Automotive", title: "Estate Arrival", aspect: "wide", image: "/automotive-karam-16-untitled-12.jpg" },
-  { id: 35, category: "Automotive", title: "Homecoming", aspect: "tall", image: "/automotive-karam-17-untitled-2.jpg" },
-  { id: 36, category: "Automotive", title: "After the Rain", aspect: "wide", image: "/automotive-karam-18-untitled-3.jpg" },
-  { id: 37, category: "Automotive", title: "Mountain Pass", aspect: "wide", image: "/automotive-karam-19-untitled-5.jpg" },
+  { id: 19, category: "Automotive", title: "Dust Trail", aspect: "wide", image: "/automotive-karam-15-untitled-9-of-23.jpg" },
+  { id: 20, category: "Automotive", title: "Mountain Pass", aspect: "tall", image: "/automotive-karam-19-untitled-5.jpg" },
+  { id: 21, category: "Automotive", title: "Colosseum Drive", aspect: "wide", image: "/automotive-karam-03-exterior-1.jpg", focus: "70% center" },
+  { id: 22, category: "Automotive", title: "Night Runner", aspect: "wide", image: "/automotive-karam-08-untitled-2-of-32.jpg" },
+  { id: 23, category: "Automotive", title: "Homecoming", aspect: "wide", image: "/automotive-karam-17-untitled-2.jpg" },
+  { id: 24, category: "Automotive", title: "Estate Arrival", aspect: "wide", image: "/automotive-karam-16-untitled-12.jpg", focus: "68% center" },
+  { id: 25, category: "Automotive", title: "Studio Reflection", aspect: "tall", image: "/automotive-karam-04-exterior-2.jpg" },
+  { id: 26, category: "Automotive", title: "Black Edition", aspect: "wide", image: "/automotive-karam-07-untitled-2-of-25.jpg", focus: "30% center" },
+  { id: 27, category: "Automotive", title: "Rear Profile", aspect: "wide", image: "/automotive-karam-10-untitled-4-of-32.jpg", focus: "30% center" },
+  { id: 28, category: "Automotive", title: "After the Rain", aspect: "wide", image: "/automotive-karam-18-untitled-3.jpg", focus: "75% center" },
+  { id: 29, category: "Automotive", title: "Copper Glow", aspect: "tall", image: "/automotive-karam-14-untitled-8-of-12.jpg" },
+  { id: 30, category: "Automotive", title: "Golden Hour Arrival", aspect: "wide", image: "/automotive-karam-01-exterior-details-1-of-12.jpg", focus: "30% center" },
+  { id: 31, category: "Automotive", title: "Underground", aspect: "tall", image: "/automotive-karam-11-untitled-5-of-14.jpg" },
+  { id: 32, category: "Automotive", title: "Sunset Boulevard", aspect: "wide", image: "/automotive-karam-05-sv-lwb-5-of-7.jpg", focus: "42% center" },
+  { id: 33, category: "Automotive", title: "Desert Palms", aspect: "wide", image: "/automotive-karam-09-untitled-37-of-38.jpg" },
+  { id: 34, category: "Automotive", title: "Modern Facade", aspect: "wide", image: "/automotive-karam-12-untitled-5-of-23.jpg", focus: "70% center" },
+  { id: 35, category: "Automotive", title: "Twilight Convoy", aspect: "wide", image: "/automotive-karam-02-exterior-details-6-of-12.jpg" },
+  { id: 36, category: "Automotive", title: "Face Forward", aspect: "tall", image: "/automotive-karam-13-untitled-7-of-19.jpg" },
+  { id: 37, category: "Automotive", title: "Snowbound", aspect: "wide", image: "/automotive-karam-06-untitled-1-of-41.jpg" },
 ];
 
 const gradients: Record<string, string[]> = {
@@ -159,6 +159,7 @@ export default function Portfolio() {
                     src={photo.image}
                     alt={photo.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
+                    style={{ objectPosition: photo.focus ?? "center" }}
                   />
                   <div
                     className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
