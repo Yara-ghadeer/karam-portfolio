@@ -15,6 +15,7 @@ const categories = [
     description: "Machines in motion — the art of speed and engineering.",
     href: "/portfolio?category=automotive",
     accent: "#ea580c",
+    image: "/automotive-karam-03-exterior-1.jpg",
   },
   {
     title: "Portraits",
