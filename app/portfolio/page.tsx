@@ -23,7 +23,6 @@ type Photo = {
 
 const photos: Photo[] = [
   { id: 1, category: "Street Photography", title: "Crosswalk", aspect: "tall" },
-  { id: 2, category: "Automotive", title: "Carbon Detail", aspect: "wide", image: "/automotive-karam-1.jpg" },
   { id: 3, category: "Portraits", title: "Quiet Gaze", aspect: "tall" },
   { id: 4, category: "Food", title: "Plated", aspect: "wide" },
   { id: 5, category: "Events", title: "Stage Lights", aspect: "tall" },
