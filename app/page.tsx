@@ -18,10 +18,11 @@ const categories = [
     image: "/automotive-karam-08-untitled-2-of-32.jpg",
   },
   {
-    title: "Portraits",
+    title: "Portraits and Candid",
     description: "Faces and feeling — capturing character in a single frame.",
-    href: "/portfolio?category=portraits",
+    href: "/portfolio?category=portraits-and-candid",
     accent: "#9333ea",
+    image: "/portraits-karam-02-untitled-2-of-3.jpg",
   },
   {
     title: "Food",

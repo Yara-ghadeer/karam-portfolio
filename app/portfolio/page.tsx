@@ -7,7 +7,7 @@ const categories = [
   "All",
   "Street Photography",
   "Automotive",
-  "Portraits",
+  "Portraits and Candid",
   "Food",
   "Events",
   "Wedding",
@@ -24,13 +24,10 @@ type Photo = {
 };
 
 const photos: Photo[] = [
-  { id: 3, category: "Portraits", title: "Quiet Gaze", aspect: "tall" },
   { id: 5, category: "Events", title: "Stage Lights", aspect: "tall" },
   { id: 6, category: "Wedding", title: "First Dance", aspect: "wide" },
-  { id: 9, category: "Portraits", title: "Window Light", aspect: "tall" },
   { id: 11, category: "Events", title: "The Crowd", aspect: "tall" },
   { id: 12, category: "Wedding", title: "Vows", aspect: "wide" },
-  { id: 15, category: "Portraits", title: "Studio Mono", aspect: "tall" },
   { id: 17, category: "Events", title: "Confetti", aspect: "wide" },
   { id: 18, category: "Wedding", title: "Golden Toast", aspect: "tall" },
   { id: 19, category: "Automotive", title: "Dust Trail", aspect: "wide", image: "/automotive-karam-15-untitled-9-of-23.jpg" },
@@ -87,6 +84,11 @@ const photos: Photo[] = [
   { id: 70, category: "Street Photography", title: "Faded Facade", aspect: "wide", image: "/street-karam-05-untitled-13-of-34.jpg" },
   { id: 71, category: "Street Photography", title: "Utility Art", aspect: "wide", image: "/street-karam-08-untitled-17-of-34.jpg" },
   { id: 72, category: "Street Photography", title: "Back Alley", aspect: "wide", image: "/street-karam-10-untitled-19-of-34.jpg" },
+  { id: 73, category: "Portraits and Candid", title: "Golden Profile", aspect: "tall", image: "/portraits-karam-02-untitled-2-of-3.jpg" },
+  { id: 74, category: "Portraits and Candid", title: "Smoke & Lace", aspect: "wide", image: "/portraits-karam-04-untitled-20-of-41.jpg" },
+  { id: 75, category: "Portraits and Candid", title: "Coffee Break", aspect: "tall", image: "/portraits-karam-01-yarrousha-1-of-1.jpg" },
+  { id: 76, category: "Portraits and Candid", title: "Forehead Kiss", aspect: "wide", image: "/portraits-karam-03-untitled-2-of-41.jpg" },
+  { id: 77, category: "Portraits and Candid", title: "Garden Walk", aspect: "wide", image: "/portraits-karam-05-untitled-29-of-41.jpg" },
 ];
 
 const gradients: Record<string, string[]> = {
@@ -102,7 +104,7 @@ const gradients: Record<string, string[]> = {
     "linear-gradient(135deg, #ecd6bf 0%, #d9bd96 100%)",
     "linear-gradient(135deg, #f1dcc2 0%, #e0c09a 100%)",
   ],
-  Portraits: [
+  "Portraits and Candid": [
     "linear-gradient(135deg, #e8dcf0 0%, #d2bce6 100%)",
     "linear-gradient(135deg, #ecdef2 0%, #d8c2ed 100%)",
     "linear-gradient(135deg, #e2d4ec 0%, #c9aede 100%)",
