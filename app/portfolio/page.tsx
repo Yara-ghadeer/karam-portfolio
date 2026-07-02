@@ -24,15 +24,12 @@ type Photo = {
 };
 
 const photos: Photo[] = [
-  { id: 1, category: "Street Photography", title: "Crosswalk", aspect: "tall" },
   { id: 3, category: "Portraits", title: "Quiet Gaze", aspect: "tall" },
   { id: 5, category: "Events", title: "Stage Lights", aspect: "tall" },
   { id: 6, category: "Wedding", title: "First Dance", aspect: "wide" },
-  { id: 7, category: "Street Photography", title: "Rainy Avenue", aspect: "wide" },
   { id: 9, category: "Portraits", title: "Window Light", aspect: "tall" },
   { id: 11, category: "Events", title: "The Crowd", aspect: "tall" },
   { id: 12, category: "Wedding", title: "Vows", aspect: "wide" },
-  { id: 13, category: "Street Photography", title: "Market Lane", aspect: "tall" },
   { id: 15, category: "Portraits", title: "Studio Mono", aspect: "tall" },
   { id: 17, category: "Events", title: "Confetti", aspect: "wide" },
   { id: 18, category: "Wedding", title: "Golden Toast", aspect: "tall" },
@@ -71,6 +68,25 @@ const photos: Photo[] = [
   { id: 51, category: "Food", title: "Game Day", aspect: "wide", image: "/food-karam-06-fuze-day-5.jpg", focus: "58% 40%" },
   { id: 52, category: "Food", title: "Halftime Sip", aspect: "tall", image: "/food-karam-05-fuze-day-4.jpg" },
   { id: 53, category: "Food", title: "Bleacher Break", aspect: "wide", image: "/food-karam-04-fuze-day-2.jpg", focus: "70% 40%" },
+  { id: 54, category: "Street Photography", title: "Dragon Gate Rush", aspect: "wide", image: "/street-karam-01-342442343-1.jpg" },
+  { id: 55, category: "Street Photography", title: "The Dumpling Stand", aspect: "tall", image: "/street-karam-11-untitled-20-of-34.jpg" },
+  { id: 56, category: "Street Photography", title: "Offerings", aspect: "tall", image: "/street-karam-15-untitled-30-of-34.jpg" },
+  { id: 57, category: "Street Photography", title: "Temple Passage", aspect: "wide", image: "/street-karam-16-untitled-31-of-34.jpg" },
+  { id: 58, category: "Street Photography", title: "Night Grill", aspect: "tall", image: "/street-karam-12-untitled-21-of-34.jpg" },
+  { id: 59, category: "Street Photography", title: "Central Market", aspect: "wide", image: "/street-karam-13-untitled-25-of-34.jpg" },
+  { id: 60, category: "Street Photography", title: "Old Meets New", aspect: "wide", image: "/street-karam-07-untitled-16-of-34.jpg" },
+  { id: 61, category: "Street Photography", title: "Lantern Lane", aspect: "wide", image: "/street-karam-04-untitled-12-of-34.jpg" },
+  { id: 62, category: "Street Photography", title: "Shopkeeper", aspect: "wide", image: "/street-karam-03-untitled-10-of-34.jpg" },
+  { id: 63, category: "Street Photography", title: "Mural Walk", aspect: "wide", image: "/street-karam-09-untitled-18-of-34.jpg" },
+  { id: 64, category: "Street Photography", title: "Street Rhythm", aspect: "tall", image: "/street-karam-17-untitled-33-of-34.jpg" },
+  { id: 65, category: "Street Photography", title: "Evening Stroll", aspect: "wide", image: "/street-karam-18-untitled-34-of-34.jpg" },
+  { id: 66, category: "Street Photography", title: "Quiet Prayer", aspect: "tall", image: "/street-karam-14-untitled-27-of-34.jpg" },
+  { id: 67, category: "Street Photography", title: "Night Market Blur", aspect: "wide", image: "/street-karam-02-42414-1-2.jpg" },
+  { id: 68, category: "Street Photography", title: "Hanging Lanterns", aspect: "wide", image: "/street-karam-06-untitled-14-of-34.jpg" },
+  { id: 69, category: "Street Photography", title: "Watchmaker", aspect: "tall", image: "/street-karam-19-untitled-6-of-34.jpg" },
+  { id: 70, category: "Street Photography", title: "Faded Facade", aspect: "wide", image: "/street-karam-05-untitled-13-of-34.jpg" },
+  { id: 71, category: "Street Photography", title: "Utility Art", aspect: "wide", image: "/street-karam-08-untitled-17-of-34.jpg" },
+  { id: 72, category: "Street Photography", title: "Back Alley", aspect: "wide", image: "/street-karam-10-untitled-19-of-34.jpg" },
 ];
 
 const gradients: Record<string, string[]> = {
