@@ -22,7 +22,7 @@ const categories = [
     description: "Faces and feeling — capturing character in a single frame.",
     href: "/portfolio?category=portraits-and-candid",
     accent: "#9333ea",
-    image: "/portraits-karam-02-untitled-2-of-3.jpg",
+    image: "/portraits-karam-09-untitled-5-of-6.jpg",
   },
   {
     title: "Food",
