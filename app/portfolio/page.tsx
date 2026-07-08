@@ -127,8 +127,8 @@ export default function Portfolio() {
   const filtered = photos.filter((p) => p.category === active);
 
   return (
-    <main className="min-h-screen pt-28 px-6 flex flex-col">
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen pt-28 px-4 flex flex-col">
+      <div className="max-w-[1800px] mx-auto">
         {/* Header */}
         <div className="mb-14">
           <p className="text-xs uppercase tracking-[0.4em] mb-4" style={{ color: "rgba(0,0,0,0.35)" }}>
