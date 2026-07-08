@@ -23,7 +23,7 @@ export default function About() {
             <div className="space-y-6 text-base font-light leading-relaxed" style={{ color: "rgba(0,0,0,0.6)" }}>
               <p>
                 I&rsquo;m Karam Kabbas, a photographer and visual storyteller specializing in
-                high-quality visual content across photography and videography. Based in
+                high-quality photography across a range of disciplines. Based in
                 Kuala Lumpur, Malaysia, I bring over a decade of experience leading teams and
                 collaborating with creative professionals to craft engaging visuals across
                 platforms and industries. I&rsquo;m available for projects worldwide — on
@@ -36,10 +36,9 @@ export default function About() {
               </p>
               <p>
                 Earlier, as a photographer with the UNDP in Syria, I led principal photography
-                and videography for humanitarian projects including Women For Peace and Cinema
-                of Life, producing short documentaries and success stories. My freelance
-                practice, spanning 2013 to 2022, carried each assignment from concept to final
-                delivery.
+                for humanitarian projects including Women For Peace and Cinema of Life,
+                producing success stories and visual reports. My freelance practice, spanning
+                2013 to 2022, carried each assignment from concept to final delivery.
               </p>
             </div>
 

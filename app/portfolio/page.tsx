@@ -126,7 +126,7 @@ export default function Portfolio() {
   const filtered = photos.filter((p) => p.category === active);
 
   return (
-    <main className="min-h-screen pt-28 px-4 flex flex-col">
+    <main className="min-h-screen pt-28 px-6 sm:px-10 lg:px-16 flex flex-col">
       <div className="max-w-[1800px] mx-auto">
         {/* Header */}
         <div className="mb-14">
