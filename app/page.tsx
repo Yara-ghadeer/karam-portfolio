@@ -4,18 +4,18 @@ import Footer from "@/components/Footer";
 
 const categories = [
   {
-    title: "Street Photography",
-    description: "Candid moments and the unscripted rhythm of life in the city.",
-    href: "/portfolio?category=street",
-    accent: "#2563eb",
-    image: "/street-karam-01-342442343-1.jpg",
-  },
-  {
     title: "Automotive",
     description: "Machines in motion — the art of speed and engineering.",
     href: "/portfolio?category=automotive",
     accent: "#ea580c",
     image: "/automotive-karam-08-untitled-2-of-32.jpg",
+  },
+  {
+    title: "Street Photography",
+    description: "Candid moments and the unscripted rhythm of life in the city.",
+    href: "/portfolio?category=street",
+    accent: "#2563eb",
+    image: "/street-karam-01-342442343-1.jpg",
   },
   {
     title: "Portraits and Candid",
@@ -102,9 +102,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Full-bleed work grid */}
-      <section className="w-full">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-0">
+      {/* Work grid */}
+      <section className="w-full px-6 sm:px-10 lg:px-16 py-3">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-[1400px] mx-auto">
           {categories.map((cat) => (
             <Link
               key={cat.title}
@@ -118,7 +118,7 @@ export default function Home() {
                   src={cat.image}
                   alt={cat.title}
                   fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
+                  sizes="(max-width: 1400px) 50vw, 700px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               ) : (
