@@ -127,7 +127,7 @@ export default function Portfolio() {
 
   return (
     <main className="min-h-screen pt-28 px-6 sm:px-10 lg:px-16 flex flex-col">
-      <div className="max-w-[1800px] mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="mb-14">
           <p className="text-xs uppercase tracking-[0.4em] mb-4" style={{ color: "rgba(0,0,0,0.35)" }}>
@@ -156,7 +156,7 @@ export default function Portfolio() {
         </div>
 
         {/* Fixed-ratio grid — every tile is the same square shape at every breakpoint, so rows always line up evenly */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {filtered.map((photo) => (
             <div
               key={photo.id}
