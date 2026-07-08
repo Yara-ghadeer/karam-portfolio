@@ -4,13 +4,10 @@ import { useState } from "react";
 import Footer from "@/components/Footer";
 
 const categories = [
-  "All",
   "Street Photography",
   "Automotive",
   "Portraits and Candid",
   "Food",
-  "Events",
-  "Wedding",
 ];
 
 type Photo = {
@@ -24,12 +21,6 @@ type Photo = {
 };
 
 const photos: Photo[] = [
-  { id: 5, category: "Events", title: "Stage Lights", aspect: "tall" },
-  { id: 6, category: "Wedding", title: "First Dance", aspect: "wide" },
-  { id: 11, category: "Events", title: "The Crowd", aspect: "tall" },
-  { id: 12, category: "Wedding", title: "Vows", aspect: "wide" },
-  { id: 17, category: "Events", title: "Confetti", aspect: "wide" },
-  { id: 18, category: "Wedding", title: "Golden Toast", aspect: "tall" },
   { id: 19, category: "Automotive", title: "Dust Trail", aspect: "wide", image: "/automotive-karam-15-untitled-9-of-23.jpg" },
   { id: 20, category: "Automotive", title: "Mountain Pass", aspect: "tall", image: "/automotive-karam-19-untitled-5.jpg" },
   { id: 21, category: "Automotive", title: "Colosseum Drive", aspect: "wide", image: "/automotive-karam-03-exterior-1.jpg", focus: "70% center" },
@@ -122,18 +113,6 @@ const gradients: Record<string, string[]> = {
     "linear-gradient(135deg, #f0dad4 0%, #e6bcae 100%)",
     "linear-gradient(135deg, #f0d0cc 0%, #e6aea3 100%)",
   ],
-  Events: [
-    "linear-gradient(135deg, #cfeaf0 0%, #a3d8e6 100%)",
-    "linear-gradient(135deg, #cce8f2 0%, #a8d2ed 100%)",
-    "linear-gradient(135deg, #d4eef0 0%, #aedee6 100%)",
-    "linear-gradient(135deg, #c8e6f0 0%, #9ed2e6 100%)",
-  ],
-  Wedding: [
-    "linear-gradient(135deg, #f0d4e4 0%, #e6b0cf 100%)",
-    "linear-gradient(135deg, #f2cddd 0%, #e8a8c8 100%)",
-    "linear-gradient(135deg, #f0dae8 0%, #e6bcd6 100%)",
-    "linear-gradient(135deg, #f0d0e0 0%, #e6aecb 100%)",
-  ],
 };
 
 function getGradient(category: string, id: number) {
@@ -142,10 +121,10 @@ function getGradient(category: string, id: number) {
 }
 
 export default function Portfolio() {
-  const [active, setActive] = useState("All");
+  const [active, setActive] = useState(categories[0]);
   const [lightbox, setLightbox] = useState<Photo | null>(null);
 
-  const filtered = active === "All" ? photos : photos.filter((p) => p.category === active);
+  const filtered = photos.filter((p) => p.category === active);
 
   return (
     <main className="min-h-screen pt-28 px-6 flex flex-col">

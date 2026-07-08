@@ -31,18 +31,6 @@ const categories = [
     accent: "#dc2626",
     image: "/food-karam-15-untitled-8-of-12.jpg",
   },
-  {
-    title: "Events",
-    description: "Energy and atmosphere — the story of a moment as it unfolds.",
-    href: "/portfolio?category=events",
-    accent: "#0891b2",
-  },
-  {
-    title: "Wedding",
-    description: "Love, emotion, and the details that make a day unforgettable.",
-    href: "/portfolio?category=wedding",
-    accent: "#db2777",
-  },
 ];
 
 export default function Home() {
