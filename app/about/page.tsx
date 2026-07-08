@@ -37,8 +37,9 @@ export default function About() {
               <p>
                 Earlier, as a photographer with the UNDP in Syria, I led principal photography
                 for humanitarian projects including Women For Peace and Cinema of Life,
-                producing success stories and visual reports. My freelance practice, spanning
-                2013 to 2022, carried each assignment from concept to final delivery.
+                producing success stories and visual reports. Alongside this, I&rsquo;ve run an
+                independent freelance practice since 2013, carrying each assignment from
+                concept to final delivery.
               </p>
             </div>
 
