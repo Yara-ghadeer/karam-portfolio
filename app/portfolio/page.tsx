@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Footer from "@/components/Footer";
 
 const categories = [
@@ -120,11 +120,61 @@ function getGradient(category: string, id: number) {
   return list[id % list.length];
 }
 
+/** Approximate aspect ratios (width / height) used to lay out justified rows */
+const ASPECT_RATIO: Record<Photo["aspect"], number> = { wide: 1.5, tall: 0.667 };
+
+type Row = { items: Photo[]; height: number };
+
+/** Flickr/Google-Photos style justified rows: scale each row so it fills the container width exactly, except the last row */
+function computeJustifiedRows(items: Photo[], containerWidth: number, targetHeight: number, gap: number): Row[] {
+  if (containerWidth <= 0) return [];
+
+  const rows: Row[] = [];
+  let rowItems: Photo[] = [];
+  let rowAspectSum = 0;
+
+  items.forEach((item) => {
+    const ratio = ASPECT_RATIO[item.aspect];
+    rowItems.push(item);
+    rowAspectSum += ratio;
+    const widthAtTargetHeight = rowAspectSum * targetHeight + gap * (rowItems.length - 1);
+    if (widthAtTargetHeight >= containerWidth) {
+      const rowHeight = (containerWidth - gap * (rowItems.length - 1)) / rowAspectSum;
+      rows.push({ items: rowItems, height: rowHeight });
+      rowItems = [];
+      rowAspectSum = 0;
+    }
+  });
+
+  if (rowItems.length) {
+    rows.push({ items: rowItems, height: targetHeight });
+  }
+
+  return rows;
+}
+
 export default function Portfolio() {
   const [active, setActive] = useState(categories[0]);
   const [lightbox, setLightbox] = useState<Photo | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver((entries) => setContainerWidth(entries[0].contentRect.width));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const filtered = photos.filter((p) => p.category === active);
+
+  const targetRowHeight = containerWidth < 640 ? 220 : containerWidth < 1024 ? 260 : 320;
+  const gap = 12;
+  const rows = useMemo(
+    () => computeJustifiedRows(filtered, containerWidth, targetRowHeight, gap),
+    [filtered, containerWidth, targetRowHeight]
+  );
 
   return (
     <main className="min-h-screen pt-28 px-4 flex flex-col">
@@ -156,72 +206,77 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Masonry-style grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 space-y-3">
-          {filtered.map((photo) => (
-            <div
-              key={photo.id}
-              onClick={() => setLightbox(photo)}
-              className="break-inside-avoid group relative overflow-hidden cursor-pointer"
-              style={{
-                background: getGradient(photo.category, photo.id),
-                height: photo.aspect === "tall" ? "420px" : "280px",
-              }}
-            >
-              {photo.image ? (
-                /* Real photo — clickable: subtle zoom + expand icon on hover */
-                <>
-                  <img
-                    src={photo.image}
-                    alt={photo.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
-                    style={{ objectPosition: photo.focus ?? "center" }}
-                  />
-                  <div
-                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: "rgba(0,0,0,0.25)" }}
-                  >
-                    <span
-                      className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
-                      style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.5)" }}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M15 3h6v6" />
-                        <path d="M9 21H3v-6" />
-                        <path d="M21 3l-7 7" />
-                        <path d="M3 21l7-7" />
-                      </svg>
-                    </span>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Empty placeholder — no text, clickable: expand icon on hover */}
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: "rgba(0,0,0,0.15)" }}
-                  >
-                    <span
-                      className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
-                      style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.6)" }}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M15 3h6v6" />
-                        <path d="M9 21H3v-6" />
-                        <path d="M21 3l-7 7" />
-                        <path d="M3 21l7-7" />
-                      </svg>
-                    </span>
-                  </div>
-                </>
-              )}
+        {/* Justified-row grid — rows fill the full width like Flickr / Google Photos */}
+        <div ref={containerRef} className="flex flex-col gap-3">
+          {rows.map((row, rowIndex) => (
+            <div key={rowIndex} className="flex gap-3">
+              {row.items.map((photo) => (
+                <div
+                  key={photo.id}
+                  onClick={() => setLightbox(photo)}
+                  className="group relative overflow-hidden cursor-pointer flex-shrink-0"
+                  style={{
+                    width: row.height * ASPECT_RATIO[photo.aspect],
+                    height: row.height,
+                    background: getGradient(photo.category, photo.id),
+                  }}
+                >
+                  {photo.image ? (
+                    /* Real photo — clickable: subtle zoom + expand icon on hover */
+                    <>
+                      <img
+                        src={photo.image}
+                        alt={photo.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
+                        style={{ objectPosition: photo.focus ?? "center" }}
+                      />
+                      <div
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ background: "rgba(0,0,0,0.25)" }}
+                      >
+                        <span
+                          className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
+                          style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.5)" }}
+                        >
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M15 3h6v6" />
+                            <path d="M9 21H3v-6" />
+                            <path d="M21 3l-7 7" />
+                            <path d="M3 21l7-7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Empty placeholder — no text, clickable: expand icon on hover */}
+                      <div
+                        className="absolute inset-0 opacity-20"
+                        style={{
+                          backgroundImage:
+                            "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
+                        }}
+                      />
+                      <div
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ background: "rgba(0,0,0,0.15)" }}
+                      >
+                        <span
+                          className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
+                          style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.6)" }}
+                        >
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M15 3h6v6" />
+                            <path d="M9 21H3v-6" />
+                            <path d="M21 3l-7 7" />
+                            <path d="M3 21l7-7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
             </div>
           ))}
         </div>
