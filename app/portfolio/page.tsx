@@ -90,6 +90,11 @@ const photos: Photo[] = [
   { id: 75, category: "Portraits and Candid", title: "Coffee Break", aspect: "tall", image: "/portraits-karam-01-yarrousha-1-of-1.jpg" },
   { id: 76, category: "Portraits and Candid", title: "Forehead Kiss", aspect: "wide", image: "/portraits-karam-03-untitled-2-of-41.jpg" },
   { id: 77, category: "Portraits and Candid", title: "Garden Walk", aspect: "wide", image: "/portraits-karam-05-untitled-29-of-41.jpg" },
+  { id: 79, category: "Portraits and Candid", title: "Green Gaze", aspect: "wide", image: "/portraits-karam-06-untitled-1-of-6.jpg" },
+  { id: 80, category: "Portraits and Candid", title: "Autumn Crouch", aspect: "tall", image: "/portraits-karam-07-untitled-2-of-6.jpg" },
+  { id: 81, category: "Portraits and Candid", title: "Red Hoodie", aspect: "wide", image: "/portraits-karam-08-untitled-3-of-6.jpg" },
+  { id: 82, category: "Portraits and Candid", title: "Golden Curtain", aspect: "tall", image: "/portraits-karam-09-untitled-5-of-6.jpg" },
+  { id: 83, category: "Portraits and Candid", title: "Coastal Walk", aspect: "wide", image: "/portraits-karam-10-untitled-6-of-6.jpg" },
 ];
 
 const gradients: Record<string, string[]> = {
