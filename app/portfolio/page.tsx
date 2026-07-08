@@ -84,6 +84,7 @@ const photos: Photo[] = [
   { id: 70, category: "Street Photography", title: "Faded Facade", aspect: "wide", image: "/street-karam-05-untitled-13-of-34.jpg" },
   { id: 71, category: "Street Photography", title: "Utility Art", aspect: "wide", image: "/street-karam-08-untitled-17-of-34.jpg" },
   { id: 72, category: "Street Photography", title: "Back Alley", aspect: "wide", image: "/street-karam-10-untitled-19-of-34.jpg" },
+  { id: 78, category: "Street Photography", title: "Street Scene", aspect: "wide", image: "/street-karam-20-untitled-4-of-6.jpg" },
   { id: 73, category: "Portraits and Candid", title: "Golden Profile", aspect: "tall", image: "/portraits-karam-02-untitled-2-of-3.jpg" },
   { id: 74, category: "Portraits and Candid", title: "Smoke & Lace", aspect: "wide", image: "/portraits-karam-04-untitled-20-of-41.jpg" },
   { id: 75, category: "Portraits and Candid", title: "Coffee Break", aspect: "tall", image: "/portraits-karam-01-yarrousha-1-of-1.jpg" },
