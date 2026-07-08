@@ -41,7 +41,7 @@ export default function Home() {
         className="relative flex flex-col items-center justify-center text-center px-6"
         style={{
           minHeight: "88vh",
-          background: "linear-gradient(180deg, #ffffff 0%, #fafaf8 55%, #f2f1ec 100%)",
+          background: "linear-gradient(180deg, #ffffff 0%, #fafaf8 100%)",
         }}
       >
         <div
