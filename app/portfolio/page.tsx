@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useState } from "react";
 import Footer from "@/components/Footer";
 
 const categories = [
@@ -14,78 +14,77 @@ type Photo = {
   id: number;
   category: string;
   title: string;
-  aspect: "tall" | "wide";
   image?: string;
-  /** CSS object-position for the grid thumbnail, so a cropped preview still centers on the car */
+  /** CSS object-position for the grid thumbnail, so a cropped preview still centers on the subject */
   focus?: string;
 };
 
 const photos: Photo[] = [
-  { id: 19, category: "Automotive", title: "Dust Trail", aspect: "wide", image: "/automotive-karam-15-untitled-9-of-23.jpg" },
-  { id: 20, category: "Automotive", title: "Mountain Pass", aspect: "tall", image: "/automotive-karam-19-untitled-5.jpg" },
-  { id: 21, category: "Automotive", title: "Colosseum Drive", aspect: "wide", image: "/automotive-karam-03-exterior-1.jpg", focus: "70% center" },
-  { id: 22, category: "Automotive", title: "Night Runner", aspect: "wide", image: "/automotive-karam-08-untitled-2-of-32.jpg" },
-  { id: 23, category: "Automotive", title: "Homecoming", aspect: "wide", image: "/automotive-karam-17-untitled-2.jpg" },
-  { id: 24, category: "Automotive", title: "Estate Arrival", aspect: "wide", image: "/automotive-karam-16-untitled-12.jpg", focus: "68% center" },
-  { id: 25, category: "Automotive", title: "Studio Reflection", aspect: "tall", image: "/automotive-karam-04-exterior-2.jpg" },
-  { id: 26, category: "Automotive", title: "Black Edition", aspect: "wide", image: "/automotive-karam-07-untitled-2-of-25.jpg", focus: "30% center" },
-  { id: 27, category: "Automotive", title: "Rear Profile", aspect: "wide", image: "/automotive-karam-10-untitled-4-of-32.jpg", focus: "30% center" },
-  { id: 28, category: "Automotive", title: "After the Rain", aspect: "wide", image: "/automotive-karam-18-untitled-3.jpg", focus: "75% center" },
-  { id: 29, category: "Automotive", title: "Copper Glow", aspect: "tall", image: "/automotive-karam-14-untitled-8-of-12.jpg" },
-  { id: 30, category: "Automotive", title: "Golden Hour Arrival", aspect: "wide", image: "/automotive-karam-01-exterior-details-1-of-12.jpg", focus: "30% center" },
-  { id: 31, category: "Automotive", title: "Underground", aspect: "tall", image: "/automotive-karam-11-untitled-5-of-14.jpg" },
-  { id: 32, category: "Automotive", title: "Sunset Boulevard", aspect: "wide", image: "/automotive-karam-05-sv-lwb-5-of-7.jpg", focus: "42% center" },
-  { id: 33, category: "Automotive", title: "Desert Palms", aspect: "wide", image: "/automotive-karam-09-untitled-37-of-38.jpg" },
-  { id: 34, category: "Automotive", title: "Modern Facade", aspect: "wide", image: "/automotive-karam-12-untitled-5-of-23.jpg", focus: "70% center" },
-  { id: 35, category: "Automotive", title: "Twilight Convoy", aspect: "wide", image: "/automotive-karam-02-exterior-details-6-of-12.jpg" },
-  { id: 36, category: "Automotive", title: "Face Forward", aspect: "tall", image: "/automotive-karam-13-untitled-7-of-19.jpg" },
-  { id: 37, category: "Automotive", title: "Snowbound", aspect: "wide", image: "/automotive-karam-06-untitled-1-of-41.jpg" },
-  { id: 38, category: "Food", title: "Stacked & Ready", aspect: "tall", image: "/food-karam-15-untitled-8-of-12.jpg" },
-  { id: 39, category: "Food", title: "Double Stack", aspect: "tall", image: "/food-karam-07-untitled-11-of-12.jpg", focus: "50% 45%" },
-  { id: 40, category: "Food", title: "Rolled Fresh", aspect: "wide", image: "/food-karam-14-untitled-6-of-27.jpg" },
-  { id: 41, category: "Food", title: "Spice Wrap", aspect: "wide", image: "/food-karam-16-untitled-8-of-27.jpg" },
-  { id: 42, category: "Food", title: "Neon Nights", aspect: "tall", image: "/food-karam-13-untitled-6-of-12.jpg", focus: "50% 40%" },
-  { id: 43, category: "Food", title: "Tropical Pour", aspect: "tall", image: "/food-karam-02-b2b-12.jpg" },
-  { id: 44, category: "Food", title: "Garnish & Glow", aspect: "tall", image: "/food-karam-03-b2b-13.jpg", focus: "50% 42%" },
-  { id: 45, category: "Food", title: "Golden Fries", aspect: "wide", image: "/food-karam-08-untitled-18-of-27.jpg" },
-  { id: 46, category: "Food", title: "Malaysian Bowl", aspect: "wide", image: "/food-karam-11-untitled-4-of-27.jpg" },
-  { id: 47, category: "Food", title: "Greek Bowl", aspect: "wide", image: "/food-karam-12-untitled-5-of-27.jpg" },
-  { id: 48, category: "Food", title: "The Pour", aspect: "wide", image: "/food-karam-01-b2b-11.jpg" },
-  { id: 49, category: "Food", title: "Classic Combo", aspect: "wide", image: "/food-karam-09-untitled-2-of-15.jpg" },
-  { id: 50, category: "Food", title: "Fresh Off the Grill", aspect: "tall", image: "/food-karam-10-untitled-3-of-15.jpg" },
-  { id: 51, category: "Food", title: "Game Day", aspect: "wide", image: "/food-karam-06-fuze-day-5.jpg", focus: "58% 40%" },
-  { id: 52, category: "Food", title: "Halftime Sip", aspect: "tall", image: "/food-karam-05-fuze-day-4.jpg" },
-  { id: 53, category: "Food", title: "Bleacher Break", aspect: "wide", image: "/food-karam-04-fuze-day-2.jpg", focus: "70% 40%" },
-  { id: 54, category: "Street Photography", title: "Dragon Gate Rush", aspect: "wide", image: "/street-karam-01-342442343-1.jpg" },
-  { id: 55, category: "Street Photography", title: "The Dumpling Stand", aspect: "tall", image: "/street-karam-11-untitled-20-of-34.jpg" },
-  { id: 56, category: "Street Photography", title: "Offerings", aspect: "tall", image: "/street-karam-15-untitled-30-of-34.jpg" },
-  { id: 57, category: "Street Photography", title: "Temple Passage", aspect: "wide", image: "/street-karam-16-untitled-31-of-34.jpg" },
-  { id: 58, category: "Street Photography", title: "Night Grill", aspect: "tall", image: "/street-karam-12-untitled-21-of-34.jpg" },
-  { id: 59, category: "Street Photography", title: "Central Market", aspect: "wide", image: "/street-karam-13-untitled-25-of-34.jpg" },
-  { id: 60, category: "Street Photography", title: "Old Meets New", aspect: "wide", image: "/street-karam-07-untitled-16-of-34.jpg" },
-  { id: 61, category: "Street Photography", title: "Lantern Lane", aspect: "wide", image: "/street-karam-04-untitled-12-of-34.jpg" },
-  { id: 62, category: "Street Photography", title: "Shopkeeper", aspect: "wide", image: "/street-karam-03-untitled-10-of-34.jpg" },
-  { id: 63, category: "Street Photography", title: "Mural Walk", aspect: "wide", image: "/street-karam-09-untitled-18-of-34.jpg" },
-  { id: 64, category: "Street Photography", title: "Street Rhythm", aspect: "tall", image: "/street-karam-17-untitled-33-of-34.jpg" },
-  { id: 65, category: "Street Photography", title: "Evening Stroll", aspect: "wide", image: "/street-karam-18-untitled-34-of-34.jpg" },
-  { id: 66, category: "Street Photography", title: "Quiet Prayer", aspect: "tall", image: "/street-karam-14-untitled-27-of-34.jpg" },
-  { id: 67, category: "Street Photography", title: "Night Market Blur", aspect: "wide", image: "/street-karam-02-42414-1-2.jpg" },
-  { id: 68, category: "Street Photography", title: "Hanging Lanterns", aspect: "wide", image: "/street-karam-06-untitled-14-of-34.jpg" },
-  { id: 69, category: "Street Photography", title: "Watchmaker", aspect: "tall", image: "/street-karam-19-untitled-6-of-34.jpg" },
-  { id: 70, category: "Street Photography", title: "Faded Facade", aspect: "wide", image: "/street-karam-05-untitled-13-of-34.jpg" },
-  { id: 71, category: "Street Photography", title: "Utility Art", aspect: "wide", image: "/street-karam-08-untitled-17-of-34.jpg" },
-  { id: 72, category: "Street Photography", title: "Back Alley", aspect: "wide", image: "/street-karam-10-untitled-19-of-34.jpg" },
-  { id: 78, category: "Street Photography", title: "Street Scene", aspect: "wide", image: "/street-karam-20-untitled-4-of-6.jpg" },
-  { id: 73, category: "Portraits and Candid", title: "Golden Profile", aspect: "tall", image: "/portraits-karam-02-untitled-2-of-3.jpg" },
-  { id: 74, category: "Portraits and Candid", title: "Smoke & Lace", aspect: "wide", image: "/portraits-karam-04-untitled-20-of-41.jpg" },
-  { id: 75, category: "Portraits and Candid", title: "Coffee Break", aspect: "tall", image: "/portraits-karam-01-yarrousha-1-of-1.jpg" },
-  { id: 76, category: "Portraits and Candid", title: "Forehead Kiss", aspect: "wide", image: "/portraits-karam-03-untitled-2-of-41.jpg" },
-  { id: 77, category: "Portraits and Candid", title: "Garden Walk", aspect: "wide", image: "/portraits-karam-05-untitled-29-of-41.jpg" },
-  { id: 79, category: "Portraits and Candid", title: "Green Gaze", aspect: "wide", image: "/portraits-karam-06-untitled-1-of-6.jpg" },
-  { id: 80, category: "Portraits and Candid", title: "Autumn Crouch", aspect: "tall", image: "/portraits-karam-07-untitled-2-of-6.jpg" },
-  { id: 81, category: "Portraits and Candid", title: "Red Hoodie", aspect: "wide", image: "/portraits-karam-08-untitled-3-of-6.jpg" },
-  { id: 82, category: "Portraits and Candid", title: "Golden Curtain", aspect: "tall", image: "/portraits-karam-09-untitled-5-of-6.jpg" },
-  { id: 83, category: "Portraits and Candid", title: "Coastal Walk", aspect: "wide", image: "/portraits-karam-10-untitled-6-of-6.jpg" },
+  { id: 19, category: "Automotive", title: "Dust Trail", image: "/automotive-karam-15-untitled-9-of-23.jpg" },
+  { id: 20, category: "Automotive", title: "Mountain Pass", image: "/automotive-karam-19-untitled-5.jpg" },
+  { id: 21, category: "Automotive", title: "Colosseum Drive", image: "/automotive-karam-03-exterior-1.jpg", focus: "70% center" },
+  { id: 22, category: "Automotive", title: "Night Runner", image: "/automotive-karam-08-untitled-2-of-32.jpg" },
+  { id: 23, category: "Automotive", title: "Homecoming", image: "/automotive-karam-17-untitled-2.jpg" },
+  { id: 24, category: "Automotive", title: "Estate Arrival", image: "/automotive-karam-16-untitled-12.jpg", focus: "68% center" },
+  { id: 25, category: "Automotive", title: "Studio Reflection", image: "/automotive-karam-04-exterior-2.jpg" },
+  { id: 26, category: "Automotive", title: "Black Edition", image: "/automotive-karam-07-untitled-2-of-25.jpg", focus: "30% center" },
+  { id: 27, category: "Automotive", title: "Rear Profile", image: "/automotive-karam-10-untitled-4-of-32.jpg", focus: "30% center" },
+  { id: 28, category: "Automotive", title: "After the Rain", image: "/automotive-karam-18-untitled-3.jpg", focus: "75% center" },
+  { id: 29, category: "Automotive", title: "Copper Glow", image: "/automotive-karam-14-untitled-8-of-12.jpg" },
+  { id: 30, category: "Automotive", title: "Golden Hour Arrival", image: "/automotive-karam-01-exterior-details-1-of-12.jpg", focus: "30% center" },
+  { id: 31, category: "Automotive", title: "Underground", image: "/automotive-karam-11-untitled-5-of-14.jpg" },
+  { id: 32, category: "Automotive", title: "Sunset Boulevard", image: "/automotive-karam-05-sv-lwb-5-of-7.jpg", focus: "42% center" },
+  { id: 33, category: "Automotive", title: "Desert Palms", image: "/automotive-karam-09-untitled-37-of-38.jpg" },
+  { id: 34, category: "Automotive", title: "Modern Facade", image: "/automotive-karam-12-untitled-5-of-23.jpg", focus: "70% center" },
+  { id: 35, category: "Automotive", title: "Twilight Convoy", image: "/automotive-karam-02-exterior-details-6-of-12.jpg" },
+  { id: 36, category: "Automotive", title: "Face Forward", image: "/automotive-karam-13-untitled-7-of-19.jpg" },
+  { id: 37, category: "Automotive", title: "Snowbound", image: "/automotive-karam-06-untitled-1-of-41.jpg" },
+  { id: 38, category: "Food", title: "Stacked & Ready", image: "/food-karam-15-untitled-8-of-12.jpg" },
+  { id: 39, category: "Food", title: "Double Stack", image: "/food-karam-07-untitled-11-of-12.jpg", focus: "50% 45%" },
+  { id: 40, category: "Food", title: "Rolled Fresh", image: "/food-karam-14-untitled-6-of-27.jpg" },
+  { id: 41, category: "Food", title: "Spice Wrap", image: "/food-karam-16-untitled-8-of-27.jpg" },
+  { id: 42, category: "Food", title: "Neon Nights", image: "/food-karam-13-untitled-6-of-12.jpg", focus: "50% 40%" },
+  { id: 43, category: "Food", title: "Tropical Pour", image: "/food-karam-02-b2b-12.jpg" },
+  { id: 44, category: "Food", title: "Garnish & Glow", image: "/food-karam-03-b2b-13.jpg", focus: "50% 42%" },
+  { id: 45, category: "Food", title: "Golden Fries", image: "/food-karam-08-untitled-18-of-27.jpg" },
+  { id: 46, category: "Food", title: "Malaysian Bowl", image: "/food-karam-11-untitled-4-of-27.jpg" },
+  { id: 47, category: "Food", title: "Greek Bowl", image: "/food-karam-12-untitled-5-of-27.jpg" },
+  { id: 48, category: "Food", title: "The Pour", image: "/food-karam-01-b2b-11.jpg" },
+  { id: 49, category: "Food", title: "Classic Combo", image: "/food-karam-09-untitled-2-of-15.jpg" },
+  { id: 50, category: "Food", title: "Fresh Off the Grill", image: "/food-karam-10-untitled-3-of-15.jpg" },
+  { id: 51, category: "Food", title: "Game Day", image: "/food-karam-06-fuze-day-5.jpg", focus: "58% 40%" },
+  { id: 52, category: "Food", title: "Halftime Sip", image: "/food-karam-05-fuze-day-4.jpg" },
+  { id: 53, category: "Food", title: "Bleacher Break", image: "/food-karam-04-fuze-day-2.jpg", focus: "70% 40%" },
+  { id: 54, category: "Street Photography", title: "Dragon Gate Rush", image: "/street-karam-01-342442343-1.jpg" },
+  { id: 55, category: "Street Photography", title: "The Dumpling Stand", image: "/street-karam-11-untitled-20-of-34.jpg" },
+  { id: 56, category: "Street Photography", title: "Offerings", image: "/street-karam-15-untitled-30-of-34.jpg" },
+  { id: 57, category: "Street Photography", title: "Temple Passage", image: "/street-karam-16-untitled-31-of-34.jpg" },
+  { id: 58, category: "Street Photography", title: "Night Grill", image: "/street-karam-12-untitled-21-of-34.jpg" },
+  { id: 59, category: "Street Photography", title: "Central Market", image: "/street-karam-13-untitled-25-of-34.jpg" },
+  { id: 60, category: "Street Photography", title: "Old Meets New", image: "/street-karam-07-untitled-16-of-34.jpg" },
+  { id: 61, category: "Street Photography", title: "Lantern Lane", image: "/street-karam-04-untitled-12-of-34.jpg" },
+  { id: 62, category: "Street Photography", title: "Shopkeeper", image: "/street-karam-03-untitled-10-of-34.jpg" },
+  { id: 63, category: "Street Photography", title: "Mural Walk", image: "/street-karam-09-untitled-18-of-34.jpg" },
+  { id: 64, category: "Street Photography", title: "Street Rhythm", image: "/street-karam-17-untitled-33-of-34.jpg" },
+  { id: 65, category: "Street Photography", title: "Evening Stroll", image: "/street-karam-18-untitled-34-of-34.jpg" },
+  { id: 66, category: "Street Photography", title: "Quiet Prayer", image: "/street-karam-14-untitled-27-of-34.jpg" },
+  { id: 67, category: "Street Photography", title: "Night Market Blur", image: "/street-karam-02-42414-1-2.jpg" },
+  { id: 68, category: "Street Photography", title: "Hanging Lanterns", image: "/street-karam-06-untitled-14-of-34.jpg" },
+  { id: 69, category: "Street Photography", title: "Watchmaker", image: "/street-karam-19-untitled-6-of-34.jpg" },
+  { id: 70, category: "Street Photography", title: "Faded Facade", image: "/street-karam-05-untitled-13-of-34.jpg" },
+  { id: 71, category: "Street Photography", title: "Utility Art", image: "/street-karam-08-untitled-17-of-34.jpg" },
+  { id: 72, category: "Street Photography", title: "Back Alley", image: "/street-karam-10-untitled-19-of-34.jpg" },
+  { id: 78, category: "Street Photography", title: "Street Scene", image: "/street-karam-20-untitled-4-of-6.jpg" },
+  { id: 73, category: "Portraits and Candid", title: "Golden Profile", image: "/portraits-karam-02-untitled-2-of-3.jpg" },
+  { id: 74, category: "Portraits and Candid", title: "Smoke & Lace", image: "/portraits-karam-04-untitled-20-of-41.jpg" },
+  { id: 75, category: "Portraits and Candid", title: "Coffee Break", image: "/portraits-karam-01-yarrousha-1-of-1.jpg" },
+  { id: 76, category: "Portraits and Candid", title: "Forehead Kiss", image: "/portraits-karam-03-untitled-2-of-41.jpg" },
+  { id: 77, category: "Portraits and Candid", title: "Garden Walk", image: "/portraits-karam-05-untitled-29-of-41.jpg" },
+  { id: 79, category: "Portraits and Candid", title: "Green Gaze", image: "/portraits-karam-06-untitled-1-of-6.jpg" },
+  { id: 80, category: "Portraits and Candid", title: "Autumn Crouch", image: "/portraits-karam-07-untitled-2-of-6.jpg" },
+  { id: 81, category: "Portraits and Candid", title: "Red Hoodie", image: "/portraits-karam-08-untitled-3-of-6.jpg" },
+  { id: 82, category: "Portraits and Candid", title: "Golden Curtain", image: "/portraits-karam-09-untitled-5-of-6.jpg" },
+  { id: 83, category: "Portraits and Candid", title: "Coastal Walk", image: "/portraits-karam-10-untitled-6-of-6.jpg" },
 ];
 
 const gradients: Record<string, string[]> = {
@@ -120,61 +119,11 @@ function getGradient(category: string, id: number) {
   return list[id % list.length];
 }
 
-/** Approximate aspect ratios (width / height) used to lay out justified rows */
-const ASPECT_RATIO: Record<Photo["aspect"], number> = { wide: 1.5, tall: 0.667 };
-
-type Row = { items: Photo[]; height: number };
-
-/** Flickr/Google-Photos style justified rows: scale each row so it fills the container width exactly, except the last row */
-function computeJustifiedRows(items: Photo[], containerWidth: number, targetHeight: number, gap: number): Row[] {
-  if (containerWidth <= 0) return [];
-
-  const rows: Row[] = [];
-  let rowItems: Photo[] = [];
-  let rowAspectSum = 0;
-
-  items.forEach((item) => {
-    const ratio = ASPECT_RATIO[item.aspect];
-    rowItems.push(item);
-    rowAspectSum += ratio;
-    const widthAtTargetHeight = rowAspectSum * targetHeight + gap * (rowItems.length - 1);
-    if (widthAtTargetHeight >= containerWidth) {
-      const rowHeight = (containerWidth - gap * (rowItems.length - 1)) / rowAspectSum;
-      rows.push({ items: rowItems, height: rowHeight });
-      rowItems = [];
-      rowAspectSum = 0;
-    }
-  });
-
-  if (rowItems.length) {
-    rows.push({ items: rowItems, height: targetHeight });
-  }
-
-  return rows;
-}
-
 export default function Portfolio() {
   const [active, setActive] = useState(categories[0]);
   const [lightbox, setLightbox] = useState<Photo | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const observer = new ResizeObserver((entries) => setContainerWidth(entries[0].contentRect.width));
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const filtered = photos.filter((p) => p.category === active);
-
-  const targetRowHeight = containerWidth < 640 ? 220 : containerWidth < 1024 ? 260 : 320;
-  const gap = 12;
-  const rows = useMemo(
-    () => computeJustifiedRows(filtered, containerWidth, targetRowHeight, gap),
-    [filtered, containerWidth, targetRowHeight]
-  );
 
   return (
     <main className="min-h-screen pt-28 px-4 flex flex-col">
@@ -206,77 +155,69 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Justified-row grid — rows fill the full width like Flickr / Google Photos */}
-        <div ref={containerRef} className="flex flex-col gap-3">
-          {rows.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex gap-3">
-              {row.items.map((photo) => (
-                <div
-                  key={photo.id}
-                  onClick={() => setLightbox(photo)}
-                  className="group relative overflow-hidden cursor-pointer flex-shrink-0"
-                  style={{
-                    width: row.height * ASPECT_RATIO[photo.aspect],
-                    height: row.height,
-                    background: getGradient(photo.category, photo.id),
-                  }}
-                >
-                  {photo.image ? (
-                    /* Real photo — clickable: subtle zoom + expand icon on hover */
-                    <>
-                      <img
-                        src={photo.image}
-                        alt={photo.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
-                        style={{ objectPosition: photo.focus ?? "center" }}
-                      />
-                      <div
-                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{ background: "rgba(0,0,0,0.25)" }}
-                      >
-                        <span
-                          className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
-                          style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.5)" }}
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M15 3h6v6" />
-                            <path d="M9 21H3v-6" />
-                            <path d="M21 3l-7 7" />
-                            <path d="M3 21l7-7" />
-                          </svg>
-                        </span>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Empty placeholder — no text, clickable: expand icon on hover */}
-                      <div
-                        className="absolute inset-0 opacity-20"
-                        style={{
-                          backgroundImage:
-                            "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
-                        }}
-                      />
-                      <div
-                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{ background: "rgba(0,0,0,0.15)" }}
-                      >
-                        <span
-                          className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
-                          style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.6)" }}
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M15 3h6v6" />
-                            <path d="M9 21H3v-6" />
-                            <path d="M21 3l-7 7" />
-                            <path d="M3 21l7-7" />
-                          </svg>
-                        </span>
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
+        {/* Fixed-ratio grid — every tile is the same square shape at every breakpoint, so rows always line up evenly */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {filtered.map((photo) => (
+            <div
+              key={photo.id}
+              onClick={() => setLightbox(photo)}
+              className="group relative aspect-square overflow-hidden cursor-pointer"
+              style={{ background: getGradient(photo.category, photo.id) }}
+            >
+              {photo.image ? (
+                /* Real photo — clickable: subtle zoom + expand icon on hover */
+                <>
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
+                    style={{ objectPosition: photo.focus ?? "center" }}
+                  />
+                  <div
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "rgba(0,0,0,0.25)" }}
+                  >
+                    <span
+                      className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
+                      style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.5)" }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 3h6v6" />
+                        <path d="M9 21H3v-6" />
+                        <path d="M21 3l-7 7" />
+                        <path d="M3 21l7-7" />
+                      </svg>
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Empty placeholder — no text, clickable: expand icon on hover */}
+                  <div
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "rgba(0,0,0,0.15)" }}
+                  >
+                    <span
+                      className="flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-sm"
+                      style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.6)" }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 3h6v6" />
+                        <path d="M9 21H3v-6" />
+                        <path d="M21 3l-7 7" />
+                        <path d="M3 21l7-7" />
+                      </svg>
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
