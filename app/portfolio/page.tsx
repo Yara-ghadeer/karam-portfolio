@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Footer from "@/components/Footer";
 
 const categories = [
@@ -9,6 +10,14 @@ const categories = [
   "Portraits and Candid",
   "Food",
 ];
+
+/** Maps the ?category= slug used by homepage links to the matching tab label */
+const categoryBySlug: Record<string, string> = {
+  street: "Street Photography",
+  automotive: "Automotive",
+  "portraits-and-candid": "Portraits and Candid",
+  food: "Food",
+};
 
 type Photo = {
   id: number;
@@ -120,7 +129,17 @@ function getGradient(category: string, id: number) {
 }
 
 export default function Portfolio() {
-  const [active, setActive] = useState(categories[0]);
+  return (
+    <Suspense fallback={null}>
+      <PortfolioContent />
+    </Suspense>
+  );
+}
+
+function PortfolioContent() {
+  const searchParams = useSearchParams();
+  const initialCategory = categoryBySlug[searchParams.get("category") ?? ""] ?? categories[0];
+  const [active, setActive] = useState(initialCategory);
   const [lightbox, setLightbox] = useState<Photo | null>(null);
 
   const filtered = photos.filter((p) => p.category === active);
